@@ -1,4 +1,3 @@
 .idea/workspace.xml
 src/main/resources/Log.log
-target/original-tests.jar
-target/tests.jar
+target/PLM_SAP_Automation-1.0-shaded.jar

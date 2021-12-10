@@ -138,6 +138,8 @@
                     <reuseForks>true</reuseForks>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/obsolete.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/approve_reject.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <properties>
                         <property>
