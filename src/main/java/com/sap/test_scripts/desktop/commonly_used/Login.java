@@ -51,8 +51,6 @@ public class Login extends GeneralTestConfig {
         autoItX.controlFocus(windowTitle, logonBtnText, logonBtnId);
         autoItX.controlClick(windowTitle, logonBtnText, logonBtnId);
 
-        getSession();
-
         // Enter username
         Obj = new ActiveXComponent(Session.invoke("FindById", usernameTxtField).toDispatch());
         Obj.invoke("setFocus");
