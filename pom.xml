@@ -137,9 +137,7 @@
                     <forkCount>0</forkCount>
                     <reuseForks>true</reuseForks>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
-                        <suiteXmlFile>src/main/resources/obsolete.xml</suiteXmlFile>
-                        <suiteXmlFile>src/main/resources/approve_reject.xml</suiteXmlFile>
+                        <suiteXmlFile>${SuiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                     <properties>
                         <property>
