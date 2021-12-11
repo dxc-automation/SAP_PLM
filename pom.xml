@@ -137,7 +137,10 @@
                     <forkCount>0</forkCount>
                     <reuseForks>true</reuseForks>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${SuiteXmlFile}</suiteXmlFile>
+                        <!--suppress UnresolvedMavenProperty -->
+                        <suiteXmlFile>src/main/resources/testng.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/approve_reject.xml</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/obsolete.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <properties>
                         <property>
