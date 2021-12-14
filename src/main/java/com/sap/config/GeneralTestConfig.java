@@ -250,9 +250,12 @@ public abstract class GeneralTestConfig {
 
         try {
             String emailOnOff = getProperties("email");
-
-            // Send via mail and open the report
-            Email.sendEmail(zipFileName);
+            if(emailOnOff.equalsIgnoreCase("on")) {
+                // Send via mail and open the report
+                Email.sendEmail(zipFileName);
+            } else {
+                System.out.println("Email functionality is disabled");
+            }
         } catch (Exception e) {
             System.out.println("\nEmail was not send......");
             saveInputInFile(e.fillInStackTrace().toString(), "Fail_email_send");
