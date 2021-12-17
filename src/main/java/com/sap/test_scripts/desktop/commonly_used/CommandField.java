@@ -20,11 +20,14 @@ public class CommandField extends GeneralTestConfig {
      */
 
 
-    private final String applicationName = "SAP Easy Access";
+    private final String applicationName = "[CLASSNN:SAP_FRONTEND_SESSION]";
     private final String commandField    = "1001";
     private final String enterButton     = "wnd[0]/tbar[0]/btn[0]";
     private final String exitButton      = "wnd[0]/tbar[0]/btn[15]";
     private final String commandFieldId  = "//*[@AutomationId='1001']";
+
+    private final String okBtn = "wnd[0]/tbar[0]/btn[0]";
+    private final String commandFieldInput = "wnd[0]/tbar[0]/okcd";
 
 
     public void exit() throws IOException, InterruptedException {
@@ -38,12 +41,14 @@ public class CommandField extends GeneralTestConfig {
     public void searchForTransaction(String searchItem) throws Exception {
         getSession();
 
-        autoItX.winActivate(applicationName);
-        autoItX.winWaitActive(applicationName);
-        autoItX.controlFocus(applicationName, "", commandField);
-        autoItX.sleep(delay);
-        autoItX.ControlSetText(applicationName,"", commandField, searchItem);
-        autoItX.sleep(delay);
+        Obj = new ActiveXComponent(Session.invoke("FindById", commandFieldInput).toDispatch());
+        Obj.invoke("setFocus");
+        Obj.setProperty("Text", searchItem);
+
+        Obj = new ActiveXComponent(Session.invoke("FindById", okBtn).toDispatch());
+        Obj.invoke("setFocus");
+        Obj.invoke("Press");
+
 
         Obj = new ActiveXComponent(Session.invoke("FindById", enterButton).toDispatch());
         Obj.invoke("setFocus");

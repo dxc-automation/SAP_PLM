@@ -74,16 +74,17 @@ public class VIM_WP_Obj extends GeneralTestConfig {
 
         switch (expectedWorkView) {
             case "personal":
-                workViewTitle = "VIM Workplace – Personal View";
+                workViewTitle = "Personal View";
                 break;
             case "team":
-                workViewTitle = "VIM Workplace – Team View";
+                workViewTitle = "Team View";
                 break;
             case "all users":
-                workViewTitle = "VIM Workplace – All Users View";
+                workViewTitle = "All Users View";
                 break;
         }
-        Assert.assertEquals(actualWorkView, workViewTitle, "Work view screen title is different from expected !");
+        boolean contains = actualWorkView.contains(expectedWorkView);
+        Assert.assertTrue(contains, "Work view screen title is different from expected !");
         transactionWindowTitle = workViewTitle;
     }
 
