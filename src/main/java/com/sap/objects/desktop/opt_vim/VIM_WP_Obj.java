@@ -83,7 +83,7 @@ public class VIM_WP_Obj extends GeneralTestConfig {
                 workViewTitle = "All Users View";
                 break;
         }
-        boolean contains = actualWorkView.contains(expectedWorkView);
+        boolean contains = actualWorkView.contains(workViewTitle);
         Assert.assertTrue(contains, "Work view screen title is different from expected !");
         transactionWindowTitle = workViewTitle;
     }
