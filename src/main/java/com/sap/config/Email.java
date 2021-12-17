@@ -61,7 +61,10 @@ public class Email {
 		// Add text message
 		BodyPart textBodyPart = new MimeBodyPart();
 		String body = "<html><head><style>p {font-family: cursive; padding: 10px; } .tab{tab-size: 2;}</style></head>" +
-				"<body><br><p>Hello Team,<br>Please find attached SAP automation tests report.</p><br>" +
+				"<body><br><p>Hello Team,<br>Please find attached SAP automation tests report. The steps required to open report are:" +
+				"<br>1. Download attached zip file." +
+				"<br>2. Extract zip to folder with name <b>report</b>" +
+				"<br>3. Open <b>TestReport.html</b></p><br>" +
 				"<p>Number of Executed Tests: &nbsp; &nbsp;" + allTests + "<br>" +
 				"Passed Tests: &nbsp; &nbsp;" + passedTests + "<br>" +
 				"Failed Tests: &ensp; &nbsp;" + failedTests + "</p>" +
