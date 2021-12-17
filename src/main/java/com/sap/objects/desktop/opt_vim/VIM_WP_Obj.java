@@ -118,7 +118,7 @@ public class VIM_WP_Obj extends GeneralTestConfig {
         // Add text
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/usr/tabsTAB_MAIN/tabpTAB1/ssubTAB_MAIN_SUBSCREEN:/OPT/SAPLVIM_PMC_UI_COMP:1001/subSELECT_SUBSCRN_MIDDLE:/OPT/SAPLVIM_PMC_UI_COMP:1200/ctxtH1_DOID-LOW").toDispatch());
         Obj.invoke("setFocus");
-        Obj.setProperty("text", TEST_DATA.getRequestID());
+        Obj.setProperty("Text", TEST_DATA.getRequestID());
         autoItX.sleep(500);
 
         // Press apply
