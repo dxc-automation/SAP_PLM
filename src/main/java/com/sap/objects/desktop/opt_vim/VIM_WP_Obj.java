@@ -116,7 +116,6 @@ public class VIM_WP_Obj extends GeneralTestConfig {
 
     public void searchDocumentAllInbox() {
         // Add text
-        autoItX.sleep(5000);
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/usr/tabsTAB_MAIN/tabpTAB1/ssubTAB_MAIN_SUBSCREEN:/OPT/SAPLVIM_PMC_UI_COMP:1001/subSELECT_SUBSCRN_MIDDLE:/OPT/SAPLVIM_PMC_UI_COMP:1200/ctxtH1_DOID-LOW").toDispatch());
         Obj.invoke("setFocus");
         autoItX.sleep(1000);
@@ -135,12 +134,12 @@ public class VIM_WP_Obj extends GeneralTestConfig {
 
     public void openSearchResultDocument() {
         // Locate execution cell
-        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/shellcont[1]/shell/shellcont[0]/shell").toDispatch());
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/shellcont[1]/shell/shellcont/shell").toDispatch());
         Obj.setProperty("currentCellColumn", "ICON_EXEC");
         Obj.invoke("setFocus");
 
         // Click execute
-        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/shellcont[1]/shell/shellcont[0]/shell").toDispatch());
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/shellcont[1]/shell/shellcont/shell").toDispatch());
         Obj.invoke("clickCurrentCell");
     }
 
