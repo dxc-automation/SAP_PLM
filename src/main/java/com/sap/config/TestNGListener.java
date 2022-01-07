@@ -2,6 +2,7 @@ package com.sap.config;
 
 import com.jacob.com.Variant;
 import com.sap.test_scripts.desktop.commonly_used.CommandField;
+import lombok.SneakyThrows;
 import org.apache.commons.lang.time.StopWatch;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -12,9 +13,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.sap.config.ExtentReport.*;
+import static com.sap.properties.FilePaths.exceptionLog;
 import static com.sap.properties.TestDataWriter.addToTemplate;
 import static com.sap.utilities.Commons.printExecutionTime;
-import static com.sap.utilities.FileUtility.getTime;
+import static com.sap.utilities.FileUtility.*;
 
 public class TestNGListener extends GeneralTestConfig implements ITestListener {
 
@@ -48,6 +50,7 @@ public class TestNGListener extends GeneralTestConfig implements ITestListener {
     }
 
 
+    @SneakyThrows
     @Override
     public void onTestFailure(ITestResult arg0) {
         // Print test status in the console
@@ -65,6 +68,8 @@ public class TestNGListener extends GeneralTestConfig implements ITestListener {
         Throwable throwable = arg0.getThrowable();
         // Print stack trace into console
         throwable.printStackTrace();
+        String exception = throwable.getMessage();
+        saveStackTrace(exception);
     }
 
 

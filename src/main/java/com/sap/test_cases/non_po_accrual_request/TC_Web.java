@@ -21,6 +21,7 @@ import static com.sap.properties.TestData.getAllTestData;
 import static com.sap.properties.TestDataReader.*;
 import static com.sap.properties.TestDataWriter.addToTemplate;
 import static com.sap.utilities.Commons.checkTestStatus;
+import static com.sap.utilities.FileUtility.saveStackTrace;
 
 @Listeners(TestNGListener.class)
 public class TC_Web extends GeneralTestConfig {
@@ -112,10 +113,10 @@ public class TC_Web extends GeneralTestConfig {
             } catch (Throwable throwable) {
                 // Print stack trace into console
                 throwable.printStackTrace();
-
+                String exception = throwable.fillInStackTrace().toString();
+                saveStackTrace(exception);
                 addToTemplate(scenarioType, testCaseNumber, "fail");
 
-                String exception = throwable.fillInStackTrace().toString();
                 if (exception.contains("jacob")) {
                     passFailScreenshot("Failed on screen: ", scenarioType, "fail", "desktop");
                 }

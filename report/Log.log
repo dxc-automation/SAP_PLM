@@ -1,8 +1,8 @@
-16:38:03 [DEBUG] Waiting for a connection...
-16:38:04 [DEBUG] ACCEPTED REQUEST GET /status HTTP/1.1
-16:38:04 [INFO] COMMAND status
+17:47:50 [DEBUG] Waiting for a connection...
+17:47:50 [DEBUG] ACCEPTED REQUEST GET /status HTTP/1.1
+17:47:50 [INFO] COMMAND status
 {}
-16:38:04 [DEBUG] RESPONSE:
+17:47:50 [DEBUG] RESPONSE:
 OK: {
   "sessionId": "AwesomeSession",
   "status": 0,
@@ -17,11 +17,11 @@ OK: {
     }
   }
 }
-16:38:04 [DEBUG] Client closed
+17:47:50 [DEBUG] Client closed
 
-16:38:04 [DEBUG] Waiting for a connection...
-16:38:10 [DEBUG] ACCEPTED REQUEST POST /session HTTP/1.1
-16:38:10 [INFO] COMMAND newSession
+17:47:50 [DEBUG] Waiting for a connection...
+17:47:56 [DEBUG] ACCEPTED REQUEST POST /session HTTP/1.1
+17:47:56 [INFO] COMMAND newSession
 {
   "desiredCapabilities": {
     "app": "C:\\Program Files (x86)\\SAP\\FrontEnd\\SAPgui\\saplogon.exe"
@@ -32,8 +32,8 @@ OK: {
     ]
   }
 }
-16:38:10 [DEBUG] Current keyboard simulator: BasedOnInputSimulatorLib
-16:38:10 [DEBUG] RESPONSE:
+17:47:57 [DEBUG] Current keyboard simulator: BasedOnInputSimulatorLib
+17:47:57 [DEBUG] RESPONSE:
 OK: {
   "sessionId": "AwesomeSession",
   "status": 0,
@@ -46,88 +46,88 @@ OK: {
     "launchDelay": 0
   }
 }
-16:38:10 [DEBUG] Client closed
+17:47:57 [DEBUG] Client closed
 
-16:38:10 [DEBUG] Waiting for a connection...
-16:39:04 [DEBUG] ACCEPTED REQUEST POST /session/AwesomeSession/element HTTP/1.1
-16:39:04 [INFO] COMMAND findElement
+17:47:57 [DEBUG] Waiting for a connection...
+17:48:49 [DEBUG] ACCEPTED REQUEST POST /session/AwesomeSession/element HTTP/1.1
+17:48:49 [INFO] COMMAND findElement
 {
   "using": "id",
   "value": "1148",
   "SESSIONID": "AwesomeSession"
 }
-16:39:05 [DEBUG] RESPONSE:
+17:48:50 [DEBUG] RESPONSE:
 OK: {
   "sessionId": "AwesomeSession",
   "status": 0,
   "value": {
-    "ELEMENT": "9964620-1"
+    "ELEMENT": "918820-1"
   }
 }
-16:39:05 [DEBUG] Client closed
+17:48:50 [DEBUG] Client closed
 
-16:39:05 [DEBUG] Waiting for a connection...
-16:39:05 [DEBUG] ACCEPTED REQUEST POST /session/AwesomeSession/element/9964620-1/value HTTP/1.1
-16:39:05 [INFO] COMMAND sendKeysToElement
+17:48:50 [DEBUG] Waiting for a connection...
+17:48:50 [DEBUG] ACCEPTED REQUEST POST /session/AwesomeSession/element/918820-1/value HTTP/1.1
+17:48:50 [INFO] COMMAND sendKeysToElement
 {
-  "id": "9964620-1",
+  "id": "918820-1",
   "value": [
     "C:\\Users\\wb580314\\source\\repos\\PLM QA COE\\src\\main\\resources\\attachments\\Proforma_Invoice_Attachment.pdf"
   ],
   "SESSIONID": "AwesomeSession",
-  "ID": "9964620-1"
+  "ID": "918820-1"
 }
-16:39:06 [INFO] Click on 'type: ControlType.ComboBox, uid: 1148, name: File name:' element at (189, 418) ClickablePoint
-16:39:06 [INFO] Press key combo 'CONTROL + VK_A'
-16:39:06 [INFO] Key press 'BACK'
-16:39:07 [INFO] Send text 'C:\Users\wb580314\source\repos\PLM QA COE\src\main\resources\attachments\Proforma_Invoice_Attachment.pdf'
-16:39:07 [DEBUG] RESPONSE:
+17:48:51 [INFO] Click on 'type: ControlType.ComboBox, uid: 1148, name: File name:' element at (189, 418) ClickablePoint
+17:48:51 [INFO] Press key combo 'CONTROL + VK_A'
+17:48:51 [INFO] Key press 'BACK'
+17:48:51 [INFO] Send text 'C:\Users\wb580314\source\repos\PLM QA COE\src\main\resources\attachments\Proforma_Invoice_Attachment.pdf'
+17:48:52 [DEBUG] RESPONSE:
 OK: {
   "sessionId": "AwesomeSession",
   "status": 0,
   "value": null
 }
-16:39:07 [DEBUG] Client closed
+17:48:52 [DEBUG] Client closed
 
-16:39:07 [DEBUG] Waiting for a connection...
-16:39:25 [DEBUG] ACCEPTED REQUEST POST /session/AwesomeSession/element HTTP/1.1
-16:39:25 [INFO] COMMAND findElement
+17:48:52 [DEBUG] Waiting for a connection...
+17:49:10 [DEBUG] ACCEPTED REQUEST POST /session/AwesomeSession/element HTTP/1.1
+17:49:10 [INFO] COMMAND findElement
 {
   "using": "name",
   "value": "File name:",
   "SESSIONID": "AwesomeSession"
 }
-16:39:26 [DEBUG] RESPONSE:
+17:49:11 [DEBUG] RESPONSE:
 OK: {
   "sessionId": "AwesomeSession",
   "status": 0,
   "value": {
-    "ELEMENT": "660168-2"
+    "ELEMENT": "1182170-2"
   }
 }
-16:39:26 [DEBUG] Client closed
+17:49:11 [DEBUG] Client closed
 
-16:39:26 [DEBUG] Waiting for a connection...
-16:39:26 [DEBUG] ACCEPTED REQUEST POST /session/AwesomeSession/element/660168-2/value HTTP/1.1
-16:39:26 [INFO] COMMAND sendKeysToElement
+17:49:11 [DEBUG] Waiting for a connection...
+17:49:11 [DEBUG] ACCEPTED REQUEST POST /session/AwesomeSession/element/1182170-2/value HTTP/1.1
+17:49:11 [INFO] COMMAND sendKeysToElement
 {
-  "id": "660168-2",
+  "id": "1182170-2",
   "value": [
     "C:\\Users\\wb580314\\source\\repos\\PLM QA COE\\src\\main\\resources\\attachments\\Proforma_Invoice_Attachment.pdf"
   ],
   "SESSIONID": "AwesomeSession",
-  "ID": "660168-2"
+  "ID": "1182170-2"
 }
-16:39:27 [INFO] Click on 'type: ControlType.Text, uid: 1090, name: File name:' element at (235, 626) ClickablePoint
-16:39:27 [INFO] Press key combo 'CONTROL + VK_A'
-16:39:27 [INFO] Key press 'BACK'
-16:39:27 [INFO] Send text 'C:\Users\wb580314\source\repos\PLM QA COE\src\main\resources\attachments\Proforma_Invoice_Attachment.pdf'
-16:39:28 [DEBUG] RESPONSE:
+17:49:12 [INFO] Click on 'type: ControlType.Text, uid: 1090, name: File name:' element at (235, 626) ClickablePoint
+17:49:12 [INFO] Press key combo 'CONTROL + VK_A'
+17:49:12 [INFO] Key press 'BACK'
+17:49:12 [INFO] Send text 'C:\Users\wb580314\source\repos\PLM QA COE\src\main\resources\attachments\Proforma_Invoice_Attachment.pdf'
+17:49:12 [DEBUG] RESPONSE:
 OK: {
   "sessionId": "AwesomeSession",
   "status": 0,
   "value": null
 }
-16:39:28 [DEBUG] Client closed
+17:49:13 [DEBUG] Client closed
 
-16:39:28 [DEBUG] Waiting for a connection...
+17:49:13 [DEBUG] Waiting for a connection...

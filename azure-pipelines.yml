@@ -8,26 +8,14 @@ trigger:
 
 pool:
   name: 'ITSBG3001'
-  
-
 
 steps:
   - task: Maven@3
     inputs:
-      timeoutInMinutes: 0
       mavenPomFile: 'pom.xml'
       mavenOptions: '-Xmx3072m'
       javaHomeOption: 'JDKVersion'
       publishJUnitResults: true
       testResultsFiles: '**/surefire-reports/TEST-*.xml'
-      goals: 'clean'
-
-  - task: Maven@3
-    inputs:
-        timeoutInMinutes: 0
-        mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        publishJUnitResults: true
-        testResultsFiles: '**/report/**.html'
-        goals: 'test'
+      goals: 'clean test -Dsurefire.suiteXmlFiles=src/main/resources/approve_reject.xml'
+      

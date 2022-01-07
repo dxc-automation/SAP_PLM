@@ -133,10 +133,20 @@ public class FileUtility extends GeneralTestConfig {
 
     //***   Save string input into .txt file
     public static void saveInputInFile(String content, String fileName) throws IOException {
-            File file = new File(reportFolder + fileName + ".log");
+            File file = new File(reportFolder + fileName + ".txt");
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(content);
             fileWriter.flush();
             fileWriter.close();
+    }
+
+
+    //***   Save stack trace into log file
+    public static void saveStackTrace(String content) throws IOException {
+        File log = new File(exceptionLog);
+        FileWriter fileWriter = new FileWriter(log);
+        fileWriter.write(content);
+        fileWriter.flush();
+        fileWriter.close();
     }
 }

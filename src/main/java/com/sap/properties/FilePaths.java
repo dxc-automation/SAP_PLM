@@ -29,7 +29,8 @@ public class FilePaths {
     public final static String screenshotsExpectedFolder = path + "\\report\\Screenshots\\Expected\\";
     public final static String videoFiles = path + "\\report\\video\\";
 
-    public final static String winiumLogFile               = path + "\\report\\Log.log";
+    public final static String winiumLog = path + "\\report\\Log.log";
+    public final static String exceptionLog                = path + "\\report\\StackTrace.log";
     public final static String config_properties_file      = path + "\\src\\main\\resources\\config.properties";
     public final static String winium_driver_file          = path + "\\src\\main\\resources\\Winium.Desktop.Driver.exe";
     public final static String firefox_driver_file         = path + "\\src\\main\\resources\\drivers\\geckodriver.exe";

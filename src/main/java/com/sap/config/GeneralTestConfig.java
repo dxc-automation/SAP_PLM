@@ -8,6 +8,7 @@ import com.jacob.com.ComThread;
 import com.jacob.com.Dispatch;
 import com.jacob.com.LibraryLoader;
 import com.jacob.com.Variant;
+import com.sap.properties.FilePaths;
 import com.sap.properties.TestDataReader;
 import com.sap.properties.TestData;
 import com.sap.utilities.Assertions;
@@ -28,12 +29,8 @@ import org.testng.annotations.*;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import static com.sap.properties.FilePaths.*;
-import static com.sap.properties.TestDataReader.*;
 import static com.sap.config.ExtentReport.*;
 import static com.sap.properties.DataReader.getProperties;
 import static com.sap.utilities.FileUtility.createDateFolder;
@@ -124,7 +121,6 @@ public abstract class GeneralTestConfig {
         @BeforeSuite
         public static void cleanReportData() throws Exception {
             // Get number of iterations
-
             deleteFolderContent(reportJsonFolder);
             deleteFolderContent(screenshotsFailedFolder);
             deleteFolderContent(screenshotsActualFolder);
@@ -132,12 +128,18 @@ public abstract class GeneralTestConfig {
             deleteFolderContent(videoFiles);
             deleteFolderContent(tempFolder);
 
-            if (new File(winiumLogFile).exists()) {
-                FileUtils.forceDelete(new File(winiumLogFile));
-            } else {
-                System.out.println("Winium log file is not found");
-            }
+            File winiumDriverLogFile = new File(winiumLog);
+            File exceptionLogFile    = new File(exceptionLog);
 
+            if (winiumDriverLogFile.exists()) {
+                FileUtils.forceDelete(winiumDriverLogFile);
+            } else {
+                System.out.println("Winium log file is not found"); }
+            if (exceptionLogFile.exists()) {
+                FileUtils.forceDelete(exceptionLogFile);
+            } else {
+                System.out.println("Previous stack trace log file is not found");
+            }
             VIDEO_RECORD.startRecording();
         }
 
@@ -167,7 +169,7 @@ public abstract class GeneralTestConfig {
                 .usingPort(9999)
                 .withVerbose(true)
                 .withSilent(false)
-                .withLogFile(new File(winiumLogFile))
+                .withLogFile(new File(winiumLog))
                 .buildDesktopService();
 
         service.start(); //Build and Start a Winium Driver service
@@ -185,12 +187,12 @@ public abstract class GeneralTestConfig {
 
         try {
             ComThread.InitSTA();
-            SapROTWr = new ActiveXComponent("SapROTWr.SapROTWrapper");
-            ROTEntry = SapROTWr.invoke("GetROTEntry", "SAPGUI").toDispatch();
+            SapROTWr     = new ActiveXComponent("SapROTWr.SapROTWrapper");
+            ROTEntry     = SapROTWr.invoke("GetROTEntry", "SAPGUI").toDispatch();
             ScriptEngine = Dispatch.call(ROTEntry, "GetScriptingEngine");
-            GUIApp = new ActiveXComponent(ScriptEngine.toDispatch());
+            GUIApp     = new ActiveXComponent(ScriptEngine.toDispatch());
             Connection = new ActiveXComponent(GUIApp.invoke("Children", 0).toDispatch());
-            Session = new ActiveXComponent(Connection.invoke("Children", 0).toDispatch());
+            Session    = new ActiveXComponent(Connection.invoke("Children", 0).toDispatch());
         } catch (Exception e) {
             e.printStackTrace();
         }
