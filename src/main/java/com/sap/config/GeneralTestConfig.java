@@ -79,6 +79,7 @@ public abstract class GeneralTestConfig {
     public Dispatch ROTEntry;
     public Variant ScriptEngine;
 
+
     /**
      * Used for screenshot generating
      * @throws Exception

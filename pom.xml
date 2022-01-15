@@ -502,5 +502,11 @@
             <artifactId>winium-elements-desktop</artifactId>
             <version>0.2.0-1</version>
         </dependency>
+
+        <dependency>
+            <groupId>de.cketti.share</groupId>
+            <artifactId>share-intent-builder</artifactId>
+            <version>0.0.2</version>
+        </dependency>
     </dependencies>
 </project>

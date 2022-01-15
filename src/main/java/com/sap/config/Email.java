@@ -52,7 +52,7 @@ public class Email {
 		message.setFrom(fromAddress);
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 		message.addRecipient(Message.RecipientType.CC, new InternetAddress(cc));
-		message.setSubject("SAP IVA Automation");
+		message.setSubject("SAP Automation");
 
 		Multipart multipart = new MimeMultipart("related");
 
@@ -90,7 +90,7 @@ public class Email {
 
 		// Send email
 		message.setContent(multipart);
-		System.out.println("Sending message");
+		System.out.println("Sending message......");
 		Transport.send(message);
 		System.out.println("Done");
 	}
