@@ -119,9 +119,10 @@ public class TC_Web extends GeneralTestConfig {
 
                 if (exception.contains("jacob")) {
                     passFailScreenshot("Failed on screen: ", scenarioType, "fail", "desktop");
+                } else {
+                    passFailScreenshot("Failed on screen: ", scenarioType, "fail", "web");
                 }
-
-                passFailScreenshot("Failed on screen: ", scenarioType, "fail", "web");
+                
                 testCaseNumber++;
                 failedTests++;
                 driver.quit();

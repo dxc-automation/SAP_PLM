@@ -164,8 +164,9 @@ public class TC_Approve_Reject extends GeneralTestConfig {
 
                     if (exception.contains("jacob")) {
                         passFailScreenshot("Failed on screen: ", scenarioType, "fail", "desktop");
+                    } else {
+                        passFailScreenshot("Failed on screen: ", scenarioType, "fail", "web");
                     }
-                    passFailScreenshot("Failed on screen: ", scenarioType, "fail", "web");
 
                     testCaseNumber++;
                     failedTests++;
