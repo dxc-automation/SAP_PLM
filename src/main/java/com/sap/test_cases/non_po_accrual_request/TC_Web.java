@@ -122,7 +122,7 @@ public class TC_Web extends GeneralTestConfig {
                 } else {
                     passFailScreenshot("Failed on screen: ", scenarioType, "fail", "web");
                 }
-                
+
                 testCaseNumber++;
                 failedTests++;
                 driver.quit();

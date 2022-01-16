@@ -251,6 +251,5 @@
     <orderEntry type="library" name="Maven: com.zaxxer:SparseBitSet:1.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.2gis.winium:winium-webdriver:0.1.0-1" level="project" />
     <orderEntry type="library" name="Maven: com.github.2gis.winium:winium-elements-desktop:0.2.0-1" level="project" />
-    <orderEntry type="library" name="Maven: de.cketti.share:share-intent-builder:0.0.2" level="project" />
   </component>
 </module>
