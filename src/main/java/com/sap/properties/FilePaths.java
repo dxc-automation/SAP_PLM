@@ -28,7 +28,7 @@ public class FilePaths {
     public final static String reportArchiveFolder = path + "/report_archive/";
 
     public final static String screenshotsFailedLocal    = "./report/Screenshots/Failed/";
-    public final static String screenshotsFailedRemote   = "./ws/report/Screenshots/Failed/";
+    public final static String screenshotsFailedRemote   = "./job/SAP/ws/report/Screenshots/Failed/";
     public final static String screenshotsFailedFolder   = path + "\\report\\Screenshots\\Failed\\";
     public final static String screenshotsActualFolder   = path + "\\report\\Screenshots\\Actual\\";
     public final static String screenshotsBufferFolder   = path + "\\report\\Screenshots\\Buffer\\";
