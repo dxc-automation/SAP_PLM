@@ -84,7 +84,7 @@ public abstract class GeneralTestConfig {
      * @throws Exception
      */
     public static String getScreenshot (String imageName, String driverType) throws IOException {
-        String imageFilePath = "/report/Screenshots/Failed/";
+        String imageFilePath = "./report/Screenshots/Failed/";
 
         if (driverType.equalsIgnoreCase("desktop")) {
             File source = ((TakesScreenshot) winiumDriver).getScreenshotAs(OutputType.FILE);
@@ -229,12 +229,16 @@ public abstract class GeneralTestConfig {
 
     @AfterSuite(alwaysRun = true)
     public void report() throws Exception {
-        extent.flush();
+        try {
+            extent.flush();
+        } catch (Exception e) {
+            System.out.println("##### All tests are disabled");
+        }
 
         try {
             driver.quit();
         } catch (Exception e) {
-            System.out.println("Driver process is killed already");
+            System.out.println("##### Driver process is killed already");
         }
 
         // Kill application process

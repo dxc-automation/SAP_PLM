@@ -136,12 +136,12 @@ public class VIM_WP_Obj extends GeneralTestConfig {
 
     public void openSearchResultDocument() {
         // Locate execution cell
-        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/shellcont[1]/shell/shellcont/shell").toDispatch());
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/shellcont[1]/shell/shellcont[0]/shell").toDispatch());
         Obj.setProperty("currentCellColumn", "ICON_EXEC");
         Obj.invoke("setFocus");
 
         // Click execute
-        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/shellcont[1]/shell/shellcont/shell").toDispatch());
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/shellcont[1]/shell/shellcont[0]/shell").toDispatch());
         Obj.invoke("clickCurrentCell");
     }
 
@@ -254,7 +254,7 @@ public class VIM_WP_Obj extends GeneralTestConfig {
 
         switch (property) {
             case "approver":
-                path = "wnd[0]/usr/subSUB_MAIN:/OPT/SAPLVIM_IDX_UI:1001/subSUB_TAB_STRIP:/OPT/SAPLVIM_IDX_UI:1002/tabsTAB_MAIN/tabpTAB6/ssubTAB_MAIN_SUBSCREEN:SAPLZFI_VIM75_IDX_UI_NPO:1903/txtGH_IDX_APPLICATION->MS_IDX_HEADER-ZAPPROVER";
+                path = "wnd[0]/usr/subSUB_MAIN:/OPT/SAPLVIM_IDX_UI:1001/subSUB_TAB_STRIP:/OPT/SAPLVIM_IDX_UI:1002/tabsTAB_MAIN/tabpTAB6/ssubTAB_MAIN_SUBSCREEN:SAPLZFI_VIM75_IDX_UI_NPO:1903/cmbGV_APPROVER_LIST";
                 break;
             case "indexUser":
                 path = "wnd[0]/usr/subSUB_MAIN:/OPT/SAPLVIM_IDX_UI:1001/subSUB_TAB_STRIP:/OPT/SAPLVIM_IDX_UI:1002/tabsTAB_MAIN/tabpTAB6/ssubTAB_MAIN_SUBSCREEN:SAPLZFI_VIM75_IDX_UI_NPO:1903/txtGH_IDX_APPLICATION->MS_IDX_HEADER-INDEX_USER";

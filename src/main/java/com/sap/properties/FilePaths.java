@@ -19,7 +19,7 @@ public class FilePaths {
     public final static String appPath             = "C:\\Program Files (x86)\\SAP\\FrontEnd\\SAPgui\\saplogon.exe";
 
     public final static String attachment          = path + "/src/main/resources/TestAttachment.xlsx";
-    public final static String testDataFile        = path + "/src/main/resources/TestData.xlsx";
+    public final static String testDataFile        = path + "/src/main/resources/TestData.xlsm";
     public final static String reportJsonFolder    = path + "/report/JSON/";
     public final static String reportFolder        = path + "/report/";
     public final static String reportHtmlFile      = path + "/report/TestReport.html";

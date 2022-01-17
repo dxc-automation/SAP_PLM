@@ -120,7 +120,7 @@ public class ZWFINVAPP_Obj extends GeneralTestConfig {
 
         switch (property) {
             case "approver":
-                path = "wnd[1]/usr/subSUB_MAIN:/OPT/SAPLVIM_IDX_UI:1002/tabsTAB_MAIN/tabpTAB6/ssubTAB_MAIN_SUBSCREEN:SAPLZFI_VIM75_IDX_UI_NPO:1903/txtGH_IDX_APPLICATION->MS_IDX_HEADER-ZAPPROVER";
+                path = "wnd[1]/usr/subSUB_MAIN:/OPT/SAPLVIM_IDX_UI:1002/tabsTAB_MAIN/tabpTAB6/ssubTAB_MAIN_SUBSCREEN:SAPLZFI_VIM75_IDX_UI_NPO:1903/cmbGV_APPROVER_LIST";
                 break;
             case "indexUser":
                 path = "wnd[1]/usr/subSUB_MAIN:/OPT/SAPLVIM_IDX_UI:1002/tabsTAB_MAIN/tabpTAB6/ssubTAB_MAIN_SUBSCREEN:SAPLZFI_VIM75_IDX_UI_NPO:1903/txtGH_IDX_APPLICATION->MS_IDX_HEADER-INDEX_USER";
