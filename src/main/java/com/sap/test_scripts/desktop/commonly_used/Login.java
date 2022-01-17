@@ -3,7 +3,6 @@ package com.sap.test_scripts.desktop.commonly_used;
 import com.jacob.activeX.ActiveXComponent;
 import com.sap.config.GeneralTestConfig;
 import com.sap.config.TestNGListener;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 
 import static com.sap.config.ExtentReport.*;
@@ -26,20 +25,20 @@ public class Login extends GeneralTestConfig {
     public void setAccount(String accountType) throws Exception {
         switch (accountType) {
             case "reviewer":
-                username = TEST_DATA_READER.getAccountingReviewerUser();
-                password = TEST_DATA_READER.getAccountingReviewerPass();
+                username = testDataReader.getAccountingReviewerUser();
+                password = testDataReader.getAccountingReviewerPass();
                 break;
             case "approver":
-                username = TEST_DATA_READER.getManagerApproveUser();
-                password = TEST_DATA_READER.getManagerApprovePass();
+                username = testDataReader.getManagerApproveUser();
+                password = testDataReader.getManagerApprovePass();
                 break;
             case "requester":
-                username = TEST_DATA_READER.getRequesterUser();
-                password = TEST_DATA_READER.getRequesterPass();
+                username = testDataReader.getRequesterUser();
+                password = testDataReader.getRequesterPass();
                 break;
             case "manager":
-                username = TEST_DATA_READER.getManagerReAssignUser();
-                password = TEST_DATA_READER.getManagerReAssignPass();
+                username = testDataReader.getManagerReAssignUser();
+                password = testDataReader.getManagerReAssignPass();
                 break;
         }
     }

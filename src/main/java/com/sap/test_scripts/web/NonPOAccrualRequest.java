@@ -18,6 +18,7 @@ import static com.sap.config.BrowserManager.wait;
 import static com.sap.properties.TestData.*;
 import static com.sap.config.ExtentReport.*;
 import static com.sap.properties.FilePaths.*;
+import static com.sap.utilities.Assertions.verifyString;
 import static com.sap.utilities.Commons.delay;
 import static com.sap.utilities.FileUtility.*;
 
@@ -150,7 +151,7 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
 
 
     public void eventNaturePurchase(String scenarioType, int testCaseNumber) throws Exception {
-        String eventNaturePurchase = TEST_DATA_READER.getEventNaturePurchase(scenarioType, testCaseNumber);
+        String eventNaturePurchase = testDataReader.getEventNaturePurchase(scenarioType, testCaseNumber);
 
         wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.eventNaturePurchaseFld));
         driver.findElement(nonPoAccrualRequestPage.eventNaturePurchaseFld).sendKeys(eventNaturePurchase);
@@ -382,7 +383,7 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
 
 
     public void addText(String scenarioType, int testCaseNumber) throws Exception {
-        String text = TEST_DATA_READER.getEventNaturePurchase(scenarioType, testCaseNumber);
+        String text = testDataReader.getEventNaturePurchase(scenarioType, testCaseNumber);
         wait.until(ExpectedConditions.elementToBeClickable(nonPoAccrualRequestPage.textInput));
         delay(500);
         commons.clickAction(nonPoAccrualRequestPage.textInput);
@@ -420,6 +421,8 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
 
         String successfullySend = driver.findElement(nonPoAccrualRequestPage.successfullyRequestSend).getText();
         String requestNumber = successfullySend.replace("Your request has been Submitted. The request # is ", "");
+
+        Assert.assertFalse(verifyString(requestNumber, "Enter the accrual amount along with the charge code and General Ledger (GL) category in the below table."));
         TEST_DATA.setRequestID(requestNumber);
 
         addTestReport(

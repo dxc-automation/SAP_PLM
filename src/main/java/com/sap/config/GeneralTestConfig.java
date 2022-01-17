@@ -8,7 +8,6 @@ import com.jacob.com.ComThread;
 import com.jacob.com.Dispatch;
 import com.jacob.com.LibraryLoader;
 import com.jacob.com.Variant;
-import com.sap.properties.FilePaths;
 import com.sap.properties.TestDataReader;
 import com.sap.properties.TestData;
 import com.sap.utilities.Assertions;
@@ -32,7 +31,7 @@ import java.nio.file.Paths;
 
 import static com.sap.properties.FilePaths.*;
 import static com.sap.config.ExtentReport.*;
-import static com.sap.properties.DataReader.getProperties;
+import static com.sap.properties.DataReader.getPropertiesFile;
 import static com.sap.utilities.FileUtility.createDateFolder;
 import static com.sap.utilities.FileUtility.*;
 
@@ -61,7 +60,7 @@ public abstract class GeneralTestConfig {
     public WiniumDriverService service;
     public static WiniumDriver winiumDriver;
 
-    public static TestDataReader TEST_DATA_READER = new TestDataReader();
+    public static TestDataReader testDataReader = new TestDataReader();
     public ExtentReport EXTENT_REPORT = new ExtentReport();
     public Assertions  assertions = new Assertions();
     public static Commons commons = new Commons();
@@ -85,21 +84,25 @@ public abstract class GeneralTestConfig {
      * @throws Exception
      */
     public static String getScreenshot (String imageName, String driverType) throws IOException {
+        String imageFilePath = getScreenshotPath();
+
         if (driverType.equalsIgnoreCase("desktop")) {
             File source = ((TakesScreenshot) winiumDriver).getScreenshotAs(OutputType.FILE);
-            imgPath = "./report/Screenshots/Failed/" + imageName + ".png";
+            imgPath = imageFilePath + imageName + ".png";
             File path = new File(imgPath);
             FileUtils.copyFile(source, path);
             return imgPath;
+
         } else if (driverType.equalsIgnoreCase("web")) {
             File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            imgPath = "./report/Screenshots/Failed/" + imageName + ".png";
+            imgPath = imageFilePath + imageName + ".png";
             File path = new File(imgPath);
             FileUtils.copyFile(source, path);
             return imgPath;
         }
         return imgPath;
     }
+
 
     public static Object screenCapture(String imgDetails, String imgName, String imgType) throws IOException {
         if (imgType.equalsIgnoreCase("fail")) {
@@ -109,6 +112,7 @@ public abstract class GeneralTestConfig {
         }
         return test;
     }
+
 
     public static void passFailScreenshot(String imgDetails, String imgName, String imgType, String driverType) throws IOException {
         String screenshotName = concate + getScreenshot(imgName, driverType);
@@ -252,7 +256,7 @@ public abstract class GeneralTestConfig {
         zipReport(zipFileName);
 
         try {
-            String emailOnOff = getProperties("email");
+            String emailOnOff = getPropertiesFile("email");
             if(emailOnOff.equalsIgnoreCase("on")) {
                 // Send via mail and open the report
                 Email.sendEmail(zipFileName);

@@ -101,55 +101,55 @@ public class TestData extends GeneralTestConfig {
 
 
     public static void getAllTestData(String scenarioType, int testCaseNumber) throws Exception {
-        String invoiceReceiptNumber = TEST_DATA_READER.getInvoiceReceiptNumber(scenarioType, testCaseNumber);
+        String invoiceReceiptNumber = testDataReader.getInvoiceReceiptNumber(scenarioType, testCaseNumber);
         TEST_DATA.setInvoiceReceiptNumber(invoiceReceiptNumber);
 
-        String invoiceDate = TEST_DATA_READER.getInvoiceDateValue(scenarioType, testCaseNumber);
+        String invoiceDate = testDataReader.getInvoiceDateValue(scenarioType, testCaseNumber);
         TEST_DATA.setInvoiceDate(invoiceDate);
 
-        String reimbursementFor = TEST_DATA_READER.getReimbursementForValue(scenarioType, testCaseNumber);
+        String reimbursementFor = testDataReader.getReimbursementForValue(scenarioType, testCaseNumber);
         TEST_DATA.setReimbursementFor(reimbursementFor);
 
-        String requestType = TEST_DATA_READER.getRequestType(scenarioType, testCaseNumber);
+        String requestType = testDataReader.getRequestType(scenarioType, testCaseNumber);
         TEST_DATA.setRequestType(requestType);
 
-        String serviceFrom = TEST_DATA_READER.getServiceDateFrom(scenarioType, testCaseNumber);
+        String serviceFrom = testDataReader.getServiceDateFrom(scenarioType, testCaseNumber);
         TEST_DATA.setServiceFrom(serviceFrom);
 
-        String serviceTo = TEST_DATA_READER.getServiceDateTo(scenarioType, testCaseNumber);
+        String serviceTo = testDataReader.getServiceDateTo(scenarioType, testCaseNumber);
         TEST_DATA.setServiceTo(serviceTo);
 
-        String chargeType = TEST_DATA_READER.getChargeType(scenarioType, testCaseNumber);
+        String chargeType = testDataReader.getChargeType(scenarioType, testCaseNumber);
         TEST_DATA.setChargeType(chargeType);
 
-        String chargeCode = TEST_DATA_READER.getChargeCode(scenarioType, testCaseNumber);
+        String chargeCode = testDataReader.getChargeCode(scenarioType, testCaseNumber);
         TEST_DATA.setChargeCode(chargeCode);
 
-        String approver = TEST_DATA_READER.getApprover(scenarioType, testCaseNumber);
+        String approver = testDataReader.getApprover(scenarioType, testCaseNumber);
         TEST_DATA.setApprover(approver);
 
-        String cardHolderUPI = TEST_DATA_READER.getUPIofCardHolder(scenarioType, testCaseNumber);
+        String cardHolderUPI = testDataReader.getUPIofCardHolder(scenarioType, testCaseNumber);
         TEST_DATA.setCardHolderUpi(cardHolderUPI);
 
-        String companyCode = TEST_DATA_READER.getCompanyCode(scenarioType, testCaseNumber);
+        String companyCode = testDataReader.getCompanyCode(scenarioType, testCaseNumber);
         TEST_DATA.setCompanyCode(companyCode);
 
-        String businessArea = TEST_DATA_READER.getBusinessArea(scenarioType, testCaseNumber);
+        String businessArea = testDataReader.getBusinessArea(scenarioType, testCaseNumber);
         TEST_DATA.setBusinessArea(businessArea);
 
-        String amount = TEST_DATA_READER.getAmount(scenarioType, testCaseNumber);
+        String amount = testDataReader.getAmount(scenarioType, testCaseNumber);
         TEST_DATA.setAmount(amount);
 
-        String currency = TEST_DATA_READER.getCurrency(scenarioType, testCaseNumber);
+        String currency = testDataReader.getCurrency(scenarioType, testCaseNumber);
         TEST_DATA.setCurrency(currency);
 
-        String upiOfTTL = TEST_DATA_READER.getUPIofTTL(scenarioType, testCaseNumber);
+        String upiOfTTL = testDataReader.getUPIofTTL(scenarioType, testCaseNumber);
         TEST_DATA.setUpiTtl(upiOfTTL);
 
-        String cardLastDigits = TEST_DATA_READER.getLastCardDigits(scenarioType, testCaseNumber);
+        String cardLastDigits = testDataReader.getLastCardDigits(scenarioType, testCaseNumber);
         TEST_DATA.setCardLastDigits(cardLastDigits);
 
-        String glCategory = TEST_DATA_READER.getGLCategory(scenarioType, testCaseNumber);
+        String glCategory = testDataReader.getGLCategory(scenarioType, testCaseNumber);
         TEST_DATA.setAccountGL(glCategory);
     }
 

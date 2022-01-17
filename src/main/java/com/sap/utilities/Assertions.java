@@ -11,6 +11,12 @@ import static com.sap.config.GeneralTestConfig.*;
 public class Assertions {
 
 
+    public static boolean verifyString(String expected, String actual) {
+        boolean contains = expected.contains(actual);
+        return contains;
+    }
+
+
     public static boolean elementExistsAssertion(WebElement element) {
         if (element.getSize() != null) {
             return true;
@@ -52,7 +58,6 @@ public class Assertions {
                     return false;
                 }
             }
-
             @Override
             public String toString() {
                 return String.format("text ('%s') to be present in element %s", text, element);

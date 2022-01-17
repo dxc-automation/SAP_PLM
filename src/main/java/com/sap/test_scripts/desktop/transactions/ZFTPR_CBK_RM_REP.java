@@ -22,7 +22,7 @@ public class ZFTPR_CBK_RM_REP extends GeneralTestConfig {
 
 
     public void openTransaction(String scenarioType, int testCaseNumber) throws Exception {
-        String testCaseString = TEST_DATA_READER.getTestCaseID(scenarioType, testCaseNumber);
+        String testCaseString = testDataReader.getTestCaseID(scenarioType, testCaseNumber);
 
         // Declare what will be information printed in the report
         testName = "<b>Chargeback details report</b>";

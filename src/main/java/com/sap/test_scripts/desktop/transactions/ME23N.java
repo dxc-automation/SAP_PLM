@@ -23,7 +23,7 @@ public class ME23N extends GeneralTestConfig {
     private String documentCreatedBy;
 
     public void openTransaction(String scenarioType, int testCaseNumber) throws Exception {
-        String testCaseString = TEST_DATA_READER.getTestCaseID(scenarioType, testCaseNumber);
+        String testCaseString = testDataReader.getTestCaseID(scenarioType, testCaseNumber);
 
         // Declare what will be information printed in the report
         testName        = "<b>Validate PO details in SAP (ME23N)</b>";
@@ -51,7 +51,7 @@ public class ME23N extends GeneralTestConfig {
         me23N.clickOtherPurchaseOrderButton();
 
         // Get test data
-        String documentPO = TEST_DATA_READER.getViewMode(scenarioType, testCaseNumber);
+        String documentPO = testDataReader.getViewMode(scenarioType, testCaseNumber);
         me23N.setDocumentPO(documentPO);
 
         me23N.clickOtherDocumentButton();
@@ -261,9 +261,9 @@ public class ME23N extends GeneralTestConfig {
         me23N.expandItem();
 
         // Get test data
-        String currency = TEST_DATA_READER.getAction(scenarioType, testCaseNumber);
-        String netOrderValue = TEST_DATA_READER.getChargeType(scenarioType, testCaseNumber);
-        String createdBy = TEST_DATA_READER.getAmount(scenarioType, testCaseNumber);
+        String currency = testDataReader.getAction(scenarioType, testCaseNumber);
+        String netOrderValue = testDataReader.getChargeType(scenarioType, testCaseNumber);
+        String createdBy = testDataReader.getAmount(scenarioType, testCaseNumber);
 
         Assert.assertEquals(currency, documentCurrency, "Item currency is not correct");
         Assert.assertEquals(netOrderValue, documentNetOrderValue, "Item net price is not correct");

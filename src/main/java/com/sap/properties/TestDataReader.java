@@ -4,6 +4,7 @@ import static com.sap.properties.DataReader.getTestData;
 
 public class TestDataReader {
 
+    public static String environment;
     public static String emailOnOff;
     public static String username;
     public static String password;

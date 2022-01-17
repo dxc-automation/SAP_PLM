@@ -58,7 +58,7 @@ public class DataReader {
 
 
     //***   Returns value from config.properties
-    public static String getProperties(String property) throws IOException {
+    public static String getPropertiesFile(String property) throws IOException {
         InputStream inputStream = new FileInputStream(config_properties_file);
         Properties properties = new Properties();
         properties.load(inputStream);
@@ -68,6 +68,7 @@ public class DataReader {
         username   = properties.getProperty("SAP_Username_1");
         password   = properties.getProperty("SAP_Password_1");
         emailOnOff = properties.getProperty("email");
+        environment= properties.getProperty("env");
         nprURL = properties.getProperty("nprUrl");
         errURL = properties.getProperty("errUrl");
 

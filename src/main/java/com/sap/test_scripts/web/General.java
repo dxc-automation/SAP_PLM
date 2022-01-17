@@ -20,8 +20,8 @@ public class General extends GeneralTestConfig {
     private NonPoAccrualRequestPage     nonPoAccrualRequestPage     = new NonPoAccrualRequestPage(driver);
 
     public void logon() throws Exception {
-        String user = TEST_DATA_READER.getRequesterUser();
-        String pass = TEST_DATA_READER.getRequesterPass();
+        String user = testDataReader.getRequesterUser();
+        String pass = testDataReader.getRequesterPass();
 
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(ePayablesHomePage.usernameInput)).sendKeys(user);

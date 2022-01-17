@@ -4,18 +4,15 @@ import static com.sap.config.BrowserManager.wait;
 
 import com.jacob.activeX.ActiveXComponent;
 import com.sap.config.GeneralTestConfig;
-import com.sap.properties.FilePaths;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.SkipException;
 
 import java.io.*;
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -199,7 +196,7 @@ public class Commons extends GeneralTestConfig {
 
     //***   Used for check which tests are enabled and disabled
     public static boolean checkTestStatus(String scenarioType, int testCaseNumber) throws Exception {
-        if (TEST_DATA_READER.getTestStatus(scenarioType, testCaseNumber).equalsIgnoreCase("False")) {
+        if (testDataReader.getTestStatus(scenarioType, testCaseNumber).equalsIgnoreCase("False")) {
             return false;
         } else {
             return true;
