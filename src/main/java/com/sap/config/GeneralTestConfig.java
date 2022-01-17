@@ -84,7 +84,7 @@ public abstract class GeneralTestConfig {
      * @throws Exception
      */
     public static String getScreenshot (String imageName, String driverType) throws IOException {
-        String imageFilePath = getScreenshotPath();
+        String imageFilePath = "/report/Screenshots/Failed/";
 
         if (driverType.equalsIgnoreCase("desktop")) {
             File source = ((TakesScreenshot) winiumDriver).getScreenshotAs(OutputType.FILE);
