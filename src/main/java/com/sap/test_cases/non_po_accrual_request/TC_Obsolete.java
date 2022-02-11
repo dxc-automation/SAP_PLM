@@ -25,17 +25,17 @@ import static com.sap.utilities.FileUtility.saveStackTrace;
 
 @Listeners(TestNGListener.class)
 public class TC_Obsolete extends GeneralTestConfig {
-    private Login  login  = new Login();
+    private Login login = new Login();
     private Logoff logoff = new Logoff();
     private VIM_WP vim_wp = new VIM_WP();
     private ePayablesRequestPortal ePayablesRequestPortal = new ePayablesRequestPortal();
-    private NonPOAccrualRequest    nonPOAccrualRequest    = new NonPOAccrualRequest();
+    private NonPOAccrualRequest nonPOAccrualRequest = new NonPOAccrualRequest();
     private BrowserManager browserManager = new BrowserManager();
     private General general = new General();
 
     private int testCaseNumber;
     private int detectedNumberOfTests;
-    private String scenarioType = "NPOARC_Obsolete";
+    private String scenarioType = "NPOACR_Obsolete";
 
     @BeforeClass
     public void countTestDataRows() throws Exception {
@@ -45,14 +45,15 @@ public class TC_Obsolete extends GeneralTestConfig {
 
     @Test
     public void Scenario_3_Obsolete() throws Exception {
-        testCaseNumber = 1;
-        do {
-            try {
-                if (!checkTestStatus(scenarioType, testCaseNumber)) {
-                    System.out.println("\nTest Case No " + testCaseNumber + " is disabled");
-                    testCaseNumber++;
-                } else {
+        for (int testCaseNumber = 1; true; testCaseNumber++) {
+                String testEnabledDisabled = checkTestStatus(scenarioType, testCaseNumber);
 
+                if (testEnabledDisabled.equals("disabled")) {
+                    System.out.println("\nTest Case No " + testCaseNumber + " is disabled");
+                    continue;
+                }
+                try {
+                    System.out.println("Test No " + testCaseNumber + " is running.......");
                     String testCaseString = getTestCaseID(scenarioType, testCaseNumber);
 
                     // Declare what will be information printed in the report
@@ -121,28 +122,26 @@ public class TC_Obsolete extends GeneralTestConfig {
                     general.checkRequestStatus(scenarioType, testCaseNumber);
 
                     addToTemplate(scenarioType, testCaseNumber, "pass");
-                    testCaseNumber++;
                     passedTests++;
-                    driver.close();
-                }
-            } catch (Throwable throwable) {
-                // Print stack trace into console
-                throwable.printStackTrace();
-                String exception = throwable.fillInStackTrace().toString();
-                saveStackTrace(throwable.getMessage());
+                } catch (Throwable throwable) {
+                    // Print stack trace into console
+                    throwable.printStackTrace();
+                    String exception = throwable.fillInStackTrace().toString();
+                    saveStackTrace(throwable.getMessage());
 
-                addToTemplate(scenarioType, testCaseNumber, "fail");
+                    addToTemplate(scenarioType, testCaseNumber, "fail");
 
-                if (exception.contains("jacob")) {
-                    passFailScreenshot("Failed on screen: ", scenarioType, "fail", "desktop");
-                } else {
-                    passFailScreenshot("Failed on screen: ", scenarioType, "fail", "web");
+                    if (exception.contains("jacob")) {
+                        passFailScreenshot("Failed on screen: ", scenarioType, "fail", "desktop");
+                        logoff.logOff();
+                    } else {
+                        passFailScreenshot("Failed on screen: ", scenarioType, "fail", "web");
+                    }
+                    failedTests++;
+                    logoff.logOff();
                 }
-                testCaseNumber++;
-                failedTests++;
-                driver.quit();
+            if (testCaseNumber == detectedNumberOfTests) break;
             }
         }
-        while (testCaseNumber == detectedNumberOfTests);
     }
-}
+

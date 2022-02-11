@@ -48,7 +48,7 @@ public class TestTemplate extends GeneralTestConfig {
         testCaseNumber = 1;
         do {
             try {
-                if (!checkTestStatus(scenarioType, testCaseNumber)) {
+                if (checkTestStatus(scenarioType, testCaseNumber).equalsIgnoreCase("disabled")) {
                     System.out.println("\nTest Case No " + testCaseNumber + " is disabled");
                     testCaseNumber++;
                 }

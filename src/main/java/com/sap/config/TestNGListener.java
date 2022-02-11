@@ -50,27 +50,12 @@ public class TestNGListener extends GeneralTestConfig implements ITestListener {
     }
 
 
-    @SneakyThrows
     @Override
     public void onTestFailure(ITestResult arg0) {
         // Print test status in the console
         System.out.println("\nTEST FAILED: [ " +arg0.getName() + " ]");
-        failedTests++;
-
-        try {
-            passFailScreenshot("", getTime(), "fail", "desktop");
-            passFailScreenshot("", getTime(), "fail", "web");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Get throwable
-        Throwable throwable = arg0.getThrowable();
-        // Print stack trace into console
-        throwable.printStackTrace();
-        String exception = throwable.getMessage();
-        saveStackTrace(exception);
     }
+
 
 
     @Override

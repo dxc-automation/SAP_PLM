@@ -138,7 +138,7 @@
                     <reuseForks>true</reuseForks>
                     <suiteXmlFiles>
                         <!--suppress UnresolvedMavenProperty -->
-                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/scenarios/${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                     <properties>
                         <property>

@@ -21,10 +21,13 @@ public class TestData extends GeneralTestConfig {
     private String serviceFrom;
     private String serviceTo;
     private String requestType;
+    private String dpDocumentType;
 
     private String reimbursementFor;
     private String invoiceDate;
     private String invoiceReceiptNumber;
+
+    private int detectedNumberOfTests;
 
     public static boolean  isRequestDuplicated;
     private String   requestStatusFromWeb;
@@ -34,6 +37,12 @@ public class TestData extends GeneralTestConfig {
 
 
     //***   Get & Set Values
+    public int  getDetectedNumberOfTests() { return  detectedNumberOfTests; }
+    public void setDetectedNumberOfTests(int newDetectedNumberOfTests) { this.detectedNumberOfTests = newDetectedNumberOfTests; }
+
+    public String getDpDocumentType() { return dpDocumentType; }
+    public void   setDpDocumentType(String newDpDocumentType) { this.dpDocumentType = newDpDocumentType; }
+
     public String getInvoiceReceiptNumber() { return invoiceReceiptNumber; }
     public void   setInvoiceReceiptNumber(String newInvoiceReceiptNumber) { this.invoiceReceiptNumber = newInvoiceReceiptNumber; }
 
@@ -101,6 +110,9 @@ public class TestData extends GeneralTestConfig {
 
 
     public static void getAllTestData(String scenarioType, int testCaseNumber) throws Exception {
+        String documentType = testDataReader.getDocumentTypeValue(scenarioType, testCaseNumber);
+        TEST_DATA.setDpDocumentType(documentType);
+
         String invoiceReceiptNumber = testDataReader.getInvoiceReceiptNumber(scenarioType, testCaseNumber);
         TEST_DATA.setInvoiceReceiptNumber(invoiceReceiptNumber);
 

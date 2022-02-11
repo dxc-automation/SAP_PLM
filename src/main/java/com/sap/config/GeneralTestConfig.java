@@ -91,14 +91,12 @@ public abstract class GeneralTestConfig {
             imgPath = imageFilePath + imageName + ".png";
             File path = new File(imgPath);
             FileUtils.copyFile(source, path);
-            return imgPath;
 
         } else if (driverType.equalsIgnoreCase("web")) {
             File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             imgPath = imageFilePath + imageName + ".png";
             File path = new File(imgPath);
             FileUtils.copyFile(source, path);
-            return imgPath;
         }
         return imgPath;
     }

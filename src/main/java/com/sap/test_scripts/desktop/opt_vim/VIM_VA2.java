@@ -12,8 +12,9 @@ import org.testng.annotations.Listeners;
 
 import java.io.IOException;
 
-import static com.sap.config.ExtentReport.startTestReport;
-import static com.sap.config.ExtentReport.test;
+import static com.sap.config.ExtentReport.*;
+import static com.sap.properties.FilePaths.reportFolder;
+import static com.sap.properties.FilePaths.tempFolder;
 import static com.sap.properties.TestDataReader.testDescription;
 import static com.sap.properties.TestDataReader.testName;
 
@@ -34,28 +35,14 @@ public class VIM_VA2 extends GeneralTestConfig {
     private String menuBarSystemStatus = "wnd[0]/mbar/menu[3]/menu[11]";
 
 
-
+    //***   Open specific transaction
     public void openTransaction(int testCaseNumer) throws Exception {
-        String testCaseString = "SAP GUI";
-
-        // Declare what will be information printed in the report
-        testName = "<b>VIM Analytics</b>";
-        testDescription =
-                "<br><b>* * * &Tab; T E S T &nbsp; &nbsp; S T E P S &Tab; * * *</b><br>" +
-                        "[1] Call transaction code using command field.<br>" +
-                        "[2] Open system status dialog and verify transaction details.<br>" +
-                        "[3] Search for specific document data entry.<br>" +
-                        "[4] Validate document details.<br>" +
-                        "[5] Close transaction.";
-
-        // Start report listener
-        startTestReport("desktop", testName, testDescription, testCaseString);
-
         commandField.searchForTransaction(transactionCodeSearch);
         commandField.checkSearchResult(transactionCode, menuBarSystemStatus);
     }
 
 
+    //***   Perform search by document processing number
     public void searchByDocumentProcessingNumber() throws Exception {
         getSession();
 
@@ -65,6 +52,38 @@ public class VIM_VA2 extends GeneralTestConfig {
         boolean elementExist = autoItX.controlCommandIsVisible(transactionWindowTitle, "", "128");
         Assert.assertTrue(elementExist);
     }
+
+
+    //***   Perform search by Document Type
+    public void searchByDpDocumentType() throws Exception {
+        vim_va2_obj.enterDpDocumentType(TEST_DATA.getDpDocumentType());
+        vim_va2_obj.clickExecute();
+    }
+
+
+    //***   Verify search results
+    public void checkSearchResults() {
+        vim_va2_obj.openListOutputView();
+        autoItX.sleep(1500);
+        String results = vim_va2_obj.getResultsNumber();
+
+        String dpDocumentType  = vim_va2_obj.getDetails("dpDocumentType");
+        String exportedFile = tempFolder + TEST_DATA.getDpDocumentType() + ".html";
+
+        test.createNode("<b><i class=\"fa fa-desktop blue-color \"></i> [ Validate Search DP Document Type ]</b>")
+                .pass("<pre>Found " + results + " results for <b>" + dpDocumentType + "</b></pre>")
+                .pass("<pre>Search results were exported successfully and can be found <a href='" + exportedFile + "'>here</a></pre>");
+    }
+
+
+    //***   Export results to file
+    public void exportResults() {
+        vim_va2_obj.openSaveListInFile();
+        vim_va2_obj.selectFileFormat();
+        String fileName = TEST_DATA.getDpDocumentType();
+        vim_va2_obj.generateHtmlFile(fileName);
+    }
+
 
     public void checkSearchResultDocumentDetails() {
         vim_va2_obj.openListOutputView();
@@ -102,6 +121,7 @@ public class VIM_VA2 extends GeneralTestConfig {
 
         vim_va2_obj.clickBackButton();
     }
+
 
     public void executeProcessDocumentWorkflow() {
         vim_va2_obj.selectFirstProcessRow();

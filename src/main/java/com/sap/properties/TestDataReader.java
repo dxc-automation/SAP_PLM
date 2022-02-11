@@ -191,4 +191,8 @@ public class TestDataReader {
     public String getInvoiceReceiptNumber(String scenarioType, int testCaseNumber) throws Exception {
         return getTestData(scenarioType, "Invoice Receipt No", testCaseNumber);
     }
+
+    public String getDocumentTypeValue(String scenarioType, int testCaseNumber) throws Exception {
+        return getTestData(scenarioType, "DP Document Type", testCaseNumber);
+    }
 }

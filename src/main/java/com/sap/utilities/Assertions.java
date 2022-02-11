@@ -11,6 +11,11 @@ import static com.sap.config.GeneralTestConfig.*;
 public class Assertions {
 
 
+    public static void verifyTestNumber() {
+
+    }
+
+
     public static boolean verifyString(String expected, String actual) {
         boolean contains = expected.contains(actual);
         return contains;

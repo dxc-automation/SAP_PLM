@@ -5,10 +5,15 @@ import com.sap.config.GeneralTestConfig;
 import com.sap.config.TestNGListener;
 import com.sap.properties.TestDataReader;
 import com.sap.test_scripts.desktop.commonly_used.CommandField;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
 import java.io.IOException;
+
+import static com.sap.properties.FilePaths.reportFolder;
+import static com.sap.properties.FilePaths.tempFolder;
 
 @Listeners(TestNGListener.class)
 public class VIM_VA2_Obj extends GeneralTestConfig {
@@ -37,6 +42,7 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
         autoItX.sleep(delay);
     }
 
+
     // Open table list view
     public void openListOutputView() {
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/usr/cntlCCTRL_MAIN/shellcont/shell/shellcont[0]/shell").toDispatch());
@@ -48,6 +54,47 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
         autoItX.winActivate("[CLASS:AfxWnd140]");
         autoItX.controlClick("[CLASS:AfxWnd140]", "", "500");
     }
+
+    // Return the number of results
+    public String getResultsNumber() {
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/titl").toDispatch());
+        String value = Obj.getProperty("text").toString();
+        return value;
+    }
+
+
+    // Get document details
+    public String getDetails(String property) {
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[1,4]").toDispatch());
+        Obj.invoke("setFocus");
+        autoItX.sleep(500);
+
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/tbar[1]/btn[39]").toDispatch());
+        Obj.invoke("press");
+        autoItX.sleep(500);
+
+        switch (property) {
+            case "documentId":
+                path = "wnd[0]/usr/sub/1[0,0]/sub/1/2[0,0]/sub/1/2/3[0,3]/lbl[27,3]";
+                break;
+            case "invoiceType":
+                path = "wnd[0]/usr/sub/1[0,0]/sub/1/2[0,0]/sub/1/2/4[0,4]/lbl[27,4]";
+                break;
+            case "dpDocumentType":
+                path = "wnd[0]/usr/sub/1[0,0]/sub/1/2[0,0]/sub/1/2/27[0,27]/lbl[27,27]";
+                break;
+        }
+        Obj = new ActiveXComponent(Session.invoke("findById", path).toDispatch());
+        Obj.invoke("setFocus");
+        value = Obj.getProperty("text").toString();
+
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/tbar[0]/btn[3]").toDispatch());
+        Obj.invoke("press");
+        autoItX.sleep(500);
+
+        return value;
+    }
+
 
     // Get specific value from table
     public String getRequestValue(String property) {
@@ -71,7 +118,11 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
                 path = "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[67,4]";
                 break;
             case "dpDocumentType":
-                path = "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[78,4]";
+                if (TEST_DATA.getDpDocumentType().equalsIgnoreCase("ZVIMNPO_CO")) {
+                    path = "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[106,4]";
+                } else {
+                    path = "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[89,4]";
+                }
                 break;
             case "processType":
                 path = "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[89,4]";
@@ -109,6 +160,8 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
         return value;
     }
 
+
+    // Click the Back button
     public void clickBackButton() {
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/tbar[0]/btn[3]").toDispatch());
         Obj.invoke("setFocus");
@@ -125,6 +178,7 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
         Obj.setProperty("selectedRows", "0");
     }
 
+
     // Process workflow
     public void clickDisplayWorkflowLog() {
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/usr/cntlCCTRL_MAIN/shellcont/shell/shellcont[1]/shell/shellcont[1]/shell").toDispatch());
@@ -133,6 +187,8 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
         Obj.invoke("pressToolbarButton", "WFLOG");
     }
 
+
+    // Click the Process Document button
     public void clickProcessDocument() {
         autoItX.winWait("Workflow Log", "", 3);
         autoItX.winActivate("Workflow Log");
@@ -142,6 +198,7 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
         System.out.println(autoItX.controlGetHandle("Workflow Log", "", "SAPTreeList2"));
     }
 
+
     // Click on the execute button
     public void clickExecute() {
         autoItX.winWait("[CLASS:SAP_FRONTEND_SESSION]", "", 3);
@@ -150,6 +207,7 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
         autoItX.sleep(delay);
         autoItX.controlClick("[CLASS:SAP_FRONTEND_SESSION]", "", executeBtnId);
     }
+
 
     // Submit
     public void submit() {
@@ -163,5 +221,51 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
         autoItX.sleep(3000);
         String result = autoItX.controlGetText("[CLASS:SAP_FRONTEND_SESSION]","","59393");
         Assert.assertNotEquals(result, "Changes saved successfully", "No search results");
+    }
+
+
+    // Enter text in DP Document Type field
+    public void enterDpDocumentType(String documentType) throws IOException, InterruptedException {
+        getSession();
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/usr/ctxtS_DOCTYP-LOW").toDispatch());
+        Obj.invoke("setFocus");
+        Obj.setProperty("text", documentType);
+    }
+
+
+    // Click the Local File button
+    public void openSaveListInFile() {
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/tbar[1]/btn[45]").toDispatch());
+        Obj.invoke("press");
+        autoItX.sleep(500);
+    }
+
+
+    // Select HTML file format
+    public void selectFileFormat() {
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[1]/usr/subSUBSCREEN_STEPLOOP:SAPLSPO5:0150/sub:SAPLSPO5:0150/radSPOPLI-SELFLAG[3,0]").toDispatch());
+        Obj.invoke("select");
+        autoItX.sleep(500);
+
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[1]/tbar[0]/btn[0]").toDispatch());
+        Obj.invoke("press");
+        autoItX.sleep(500);
+    }
+
+
+    public void generateHtmlFile(String fileName) {
+        // Path
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[1]/usr/ctxtDY_PATH").toDispatch());
+        Obj.setProperty("text", tempFolder);
+        autoItX.sleep(500);
+
+        // File
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[1]/usr/ctxtDY_FILENAME").toDispatch());
+        Obj.setProperty("text", fileName + ".html");
+        autoItX.sleep(500);
+
+        // Generate
+        Obj = new ActiveXComponent(Session.invoke("findById", "wnd[1]/tbar[0]/btn[0]").toDispatch());
+        Obj.invoke("press");
     }
 }

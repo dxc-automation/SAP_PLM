@@ -51,31 +51,43 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
         wait.until(ExpectedConditions.elementToBeClickable(nonPoAccrualRequestPage.companyCodeInputFld));
         String selectedCompanyCode = driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).getAttribute("value");
 
-        switch (selectedCompanyCode) {
+        switch (companyCodeValue) {
             case "IBRD":
-                System.out.println("Selected company code is " + selectedCompanyCode);
+                if (!selectedCompanyCode.equalsIgnoreCase("IBRD")) {
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld);
+                    commons.clickElement(nonPoAccrualRequestPage.companyCodeInputFld);
+                    delay(1000);
+
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ARROW_UP);
+                    delay(500);
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ENTER);
+                    delay(500);
+                }
                 break;
             case "IFC":
-                driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld);
-                commons.clickElement(nonPoAccrualRequestPage.companyCodeInputFld);
-                delay(1000);
+                if (!selectedCompanyCode.equalsIgnoreCase("IFC")) {
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld);
+                    commons.clickElement(nonPoAccrualRequestPage.companyCodeInputFld);
+                    delay(1000);
 
-                driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ARROW_UP);
-                delay(1000);
-                driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ENTER);
-                delay(500);
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ARROW_UP);
+                    delay(1000);
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ENTER);
+                    delay(500);
+                }
                 break;
             case "MIGA":
-                driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld);
-                commons.clickElement(nonPoAccrualRequestPage.companyCodeInputFld);
-                delay(1000);
+                if (!selectedCompanyCode.equalsIgnoreCase("MIGA")) {
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld);
+                    commons.clickElement(nonPoAccrualRequestPage.companyCodeInputFld);
+                    delay(1000);
 
-                driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ARROW_UP);
-                delay(1000);
-                driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ARROW_UP);
-                delay(500);
-                driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ENTER);
-                delay(500);
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ARROW_DOWN);
+                    delay(1000);
+
+                    driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).sendKeys(Keys.ENTER);
+                    delay(500);
+                }
                 break;
         }
         String companyCode = driver.findElement(nonPoAccrualRequestPage.companyCodeInputFld).getAttribute("value");
@@ -343,7 +355,9 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
         commons.clickAction(nonPoAccrualRequestPage.ttlReviewersAttachmentInput);
         delay(1500);
 
-        winiumDriver.findElementByName("File name:").sendKeys(proformaInvoiceAttachment);
+        WebElement openDialog = winiumDriver.findElementByName("Open");
+        openDialog.findElement(By.id("1090")).sendKeys(ttlReviewersApprovalAttachment);
+
         delay(1000);
 
         autoItX.winWaitActive("[CLASS:#32770]", "", 10);

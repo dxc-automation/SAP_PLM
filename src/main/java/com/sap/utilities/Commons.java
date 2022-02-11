@@ -195,17 +195,17 @@ public class Commons extends GeneralTestConfig {
     }
 
     //***   Used for check which tests are enabled and disabled
-    public static boolean checkTestStatus(String scenarioType, int testCaseNumber) throws Exception {
-        String enabledDisabled = testDataReader.getTestStatus(scenarioType, testCaseNumber);
-
-        switch (enabledDisabled) {
-            case "FALSE":
-                status = false;
-                break;
-
-            case "TRUE":
-                status = true;
-                break;
+    public static String checkTestStatus(String scenarioType, int testCaseNumber) throws Exception {
+        String status = "";
+        try {
+            String enabledDisabled = testDataReader.getTestStatus(scenarioType, testCaseNumber).toUpperCase(Locale.ROOT);
+            if (enabledDisabled.equalsIgnoreCase("FALSE")) {
+                status = "disabled";
+            } else {
+                status = "enabled";
+            }
+        } catch (Exception e) {
+            System.out.println("Test status is null");
         }
         return status;
     }

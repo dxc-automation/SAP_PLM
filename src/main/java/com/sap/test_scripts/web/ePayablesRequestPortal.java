@@ -27,6 +27,10 @@ public class ePayablesRequestPortal extends GeneralTestConfig {
                 url = getPropertiesFile("errUrl");
                 driver.get(url);
                 break;
+            case "lease":
+                url = getPropertiesFile("leaseUrl");
+                driver.get(url);
+                break;
         }
     }
 }

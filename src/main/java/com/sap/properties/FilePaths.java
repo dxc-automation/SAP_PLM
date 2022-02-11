@@ -40,7 +40,7 @@ public class FilePaths {
     public final static String winium_driver_file          = path + "\\src\\main\\resources\\Winium.Desktop.Driver.exe";
     public final static String firefox_driver_file         = path + "\\src\\main\\resources\\drivers\\geckodriver.exe";
 
-    public final static String tempFolder                     = path + "\\report\\temp\\";
+    public final static String tempFolder                     = path + "/report/temp/";
     public final static String proformaInvoiceAttachment      = path + "\\src\\main\\resources\\attachments\\Proforma_Invoice_Attachment.pdf";
     public final static String ttlReviewersApprovalAttachment = path + "\\src\\main\\resources\\attachments\\TTL_Reviewers_Approval.pdf";
     public final static String splitChargesAttachment         = path + "\\src\\main\\resources\\attachments\\TEMPLATE.XLS";
