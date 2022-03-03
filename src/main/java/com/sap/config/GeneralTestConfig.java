@@ -83,7 +83,7 @@ public abstract class GeneralTestConfig {
      * Used for screenshot generating
      * @throws Exception
      */
-    public static String getScreenshot (String imageName, String driverType) throws IOException {
+    private static String getScreenshot (String imageName, String driverType) throws IOException {
         String imageFilePath = "./report/Screenshots/Failed/";
 
         if (driverType.equalsIgnoreCase("desktop")) {
@@ -102,7 +102,7 @@ public abstract class GeneralTestConfig {
     }
 
 
-    public static Object screenCapture(String imgDetails, String imgName, String imgType) throws IOException {
+    private static Object screenCapture(String imgDetails, String imgName, String imgType) throws IOException {
         if (imgType.equalsIgnoreCase("fail")) {
             test.log(Status.FAIL, imgDetails, MediaEntityBuilder.createScreenCaptureFromPath(imgName).build());
         } else if (imgType.equalsIgnoreCase("normal")) {

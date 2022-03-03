@@ -10,6 +10,7 @@ import com.sap.test_scripts.desktop.opt_vim.VIM_WP;
 import com.sap.test_scripts.web.General;
 import com.sap.test_scripts.web.NonPOAccrualRequest;
 import com.sap.test_scripts.web.ePayablesRequestPortal;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -38,7 +39,7 @@ public class TS_31_Create_NPO_Accrual_CO_HQ extends GeneralTestConfig {
     public int detectedNumberOfTests;
     private String scenarioType = "TS_31_Create_NPO_Accrual_CO_HQ";
 
-    @BeforeTest
+    @BeforeClass
     public void countTestDataRows() throws Exception {
         detectedNumberOfTests = getNumberOfRows(scenarioType);
         TEST_DATA.setDetectedNumberOfTests(detectedNumberOfTests);
@@ -47,8 +48,11 @@ public class TS_31_Create_NPO_Accrual_CO_HQ extends GeneralTestConfig {
 
 
     @Test
-    public void searchForDpDocumentType() throws Exception {
+    public void createNpoAccrualRequest() throws Exception {
         for (int testCaseNumber = 1; true; ++testCaseNumber) {
+            if (testCaseNumber > detectedNumberOfTests) {
+                break;
+            }
             String testEnabledDisabled = checkTestStatus(scenarioType, testCaseNumber);
 
             if (testEnabledDisabled.equals("disabled")) {
@@ -65,7 +69,7 @@ public class TS_31_Create_NPO_Accrual_CO_HQ extends GeneralTestConfig {
                         "<b><i class=\"fa fa-desktop blue-color \"></i> Search by Document Type</b><br><br>" +
                                 "Validate that the user can create NPO Accrual Request (CO/HQ) from ePayables Request Portal. Then same NPO Accrual Requests are routed for review and pending approval in SAP system.<br>" +
                                 "[1] Open ePayables Request Portal in browser.<br>" +
-                                "[2] Submit a Non-PO Accrual Request (CO/HQ)." +
+                                "[2] Submit a Non-PO Accrual Request (CO/HQ).<br>" +
                                 "[3] Enter the transaction code from the SAP Easy Access World Bank.<br>" +
                                 "[4] Enter specific Document Process Number.<br>" +
                                 "[5] Verify that specific document pending for approval.<br>" +
@@ -124,6 +128,7 @@ public class TS_31_Create_NPO_Accrual_CO_HQ extends GeneralTestConfig {
                 logoff.logOff();
 
                 addToTemplate(scenarioType, testCaseNumber, "pass");
+                browserManager.tearDownDriver();
                 passedTests++;
             } catch (Throwable throwable) {
                 // Print stack trace into console
@@ -137,7 +142,6 @@ public class TS_31_Create_NPO_Accrual_CO_HQ extends GeneralTestConfig {
                 failedTests++;
                 logoff.logOff();
             }
-            if (testCaseNumber == detectedNumberOfTests) break;
         }
     }
 }

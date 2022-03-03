@@ -48,6 +48,9 @@ public class TC_Approve_Reject extends GeneralTestConfig {
     @Test
     public void Scenario_1() throws Exception {
         for (int testCaseNumber = 1; true; testCaseNumber++) {
+            if (testCaseNumber > detectedNumberOfTests) {
+                break;
+            }
             String testEnabledDisabled = checkTestStatus(scenarioType, testCaseNumber);
 
             if (testEnabledDisabled.equals("disabled")) {
@@ -150,6 +153,7 @@ public class TC_Approve_Reject extends GeneralTestConfig {
                     general.checkRequestStatus(scenarioType, testCaseNumber);
 
                     addToTemplate(scenarioType, testCaseNumber, "pass");
+                    browserManager.tearDownDriver();
                     passedTests++;
                     } catch(Throwable throwable) {
                         // Print stack trace into console
@@ -169,7 +173,6 @@ public class TC_Approve_Reject extends GeneralTestConfig {
                         failedTests++;
                         logoff.logOff();
                     }
-            if (testCaseNumber == detectedNumberOfTests) break;
         }
     }
 }

@@ -10,6 +10,7 @@ import com.sap.test_scripts.desktop.opt_vim.VIM_WP;
 import com.sap.test_scripts.web.General;
 import com.sap.test_scripts.web.NonPOAccrualRequest;
 import com.sap.test_scripts.web.ePayablesRequestPortal;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -39,7 +40,7 @@ public class TS_30_Check_SAP_Report extends GeneralTestConfig {
     public int detectedNumberOfTests;
     private String scenarioType = "TS_30_Check_SAP_Report";
 
-    @BeforeTest
+    @BeforeClass
     public void countTestDataRows() throws Exception {
         detectedNumberOfTests = getNumberOfRows(scenarioType);
         TEST_DATA.setDetectedNumberOfTests(detectedNumberOfTests);
@@ -50,6 +51,9 @@ public class TS_30_Check_SAP_Report extends GeneralTestConfig {
     @Test
     public void searchForDpDocumentType() throws Exception {
         for (int testCaseNumber = 1; true; ++testCaseNumber) {
+            if (testCaseNumber > detectedNumberOfTests) {
+                break;
+            }
             String testEnabledDisabled = checkTestStatus(scenarioType, testCaseNumber);
 
             if (testEnabledDisabled.equals("disabled")) {
@@ -86,6 +90,7 @@ public class TS_30_Check_SAP_Report extends GeneralTestConfig {
                 logoff.logOff();
 
                 addToTemplate(scenarioType, testCaseNumber, "pass");
+                browserManager.tearDownDriver();
                 passedTests++;
             } catch (Throwable throwable) {
                 // Print stack trace into console
@@ -99,7 +104,6 @@ public class TS_30_Check_SAP_Report extends GeneralTestConfig {
                 failedTests++;
                 logoff.logOff();
             }
-            if (testCaseNumber == detectedNumberOfTests) break;
         }
     }
 }

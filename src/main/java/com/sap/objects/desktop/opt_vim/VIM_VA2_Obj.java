@@ -118,7 +118,7 @@ public class VIM_VA2_Obj extends GeneralTestConfig {
                 path = "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[67,4]";
                 break;
             case "dpDocumentType":
-                if (TEST_DATA.getDpDocumentType().equalsIgnoreCase("ZVIMNPO_CO")) {
+                if (TEST_DATA.getDpDocumentType().equalsIgnoreCase("CO")) {
                     path = "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[106,4]";
                 } else {
                     path = "wnd[0]/usr/sub/1[0,0]/sub/1/3[0,1]/sub/1/3/4[0,4]/lbl[89,4]";

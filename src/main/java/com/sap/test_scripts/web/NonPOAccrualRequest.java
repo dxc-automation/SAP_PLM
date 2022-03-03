@@ -13,6 +13,7 @@ import org.testng.annotations.Listeners;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Locale;
 
 import static com.sap.config.BrowserManager.wait;
 import static com.sap.properties.TestData.*;
@@ -30,6 +31,7 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
     private NonPoAccrualRequestPage nonPoAccrualRequestPage = new NonPoAccrualRequestPage(driver);
 
     private String cardCyclePeriod;
+    private boolean approver;
 
 
     public void proceedNonPoAccrualRequest() throws Exception {
@@ -116,18 +118,24 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
 
 
     public void requestFor() throws Exception {
-        switch (TEST_DATA.getRequestType()) {
+        String requestType = TEST_DATA.getRequestType();
+        switch (requestType) {
             case "Event card":
-                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.eventCardCheckbox)).click();
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.eventCardCheckbox));
+                WebElement eventCard = driver.findElement(nonPoAccrualRequestPage.eventCardCheckbox);
+                eventCard.click();
                 break;
             case "PCard":
-                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.pCardCheckbox)).click();
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.pCardCheckbox));
+                WebElement pCard = driver.findElement(nonPoAccrualRequestPage.pCardCheckbox);
+                pCard.click();
                 break;
             case "Other":
-                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.nonPurchaseOrderCheckbox)).click();
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.nonPurchaseRadioBtn));
+                WebElement other = driver.findElement(nonPoAccrualRequestPage.nonPurchaseRadioBtn);
+                other.click();
                 break;
         }
-        test.pass("Expense type <b>" + TEST_DATA.getRequestType() + "</b> is selected");
     }
 
 
@@ -163,11 +171,21 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
 
 
     public void eventNaturePurchase(String scenarioType, int testCaseNumber) throws Exception {
-        String eventNaturePurchase = testDataReader.getEventNaturePurchase(scenarioType, testCaseNumber);
+        String eventNaturePurchase = testDataReader.getEventNaturePurchaseValue(scenarioType, testCaseNumber);
+        String requestType = TEST_DATA.getRequestType();
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.eventNaturePurchaseFld));
-        driver.findElement(nonPoAccrualRequestPage.eventNaturePurchaseFld).sendKeys(eventNaturePurchase);
-        System.out.println("Event/Nature purchase " + eventNaturePurchase);
+        switch (requestType) {
+            case "Event Card":
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.eventNaturePurchaseFld));
+                driver.findElement(nonPoAccrualRequestPage.eventNaturePurchaseFld).sendKeys(eventNaturePurchase);
+                System.out.println("Event/Nature purchase " + eventNaturePurchase);
+                break;
+            case "Other":
+                wait.until(ExpectedConditions.elementToBeClickable(nonPoAccrualRequestPage.eventNaturePurchaseInput)).click();
+                driver.findElement(nonPoAccrualRequestPage.eventNaturePurchaseInput).sendKeys(eventNaturePurchase.toUpperCase(Locale.ROOT));
+                System.out.println("Event/Nature purchase " + eventNaturePurchase);
+                break;
+        }
     }
 
 
@@ -182,25 +200,68 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
 
     public void serviceFrom() throws Exception {
         String serviceFromValue = TEST_DATA.getServiceFrom();
+        String requestType = TEST_DATA.getRequestType();
+        delay(500);
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.serviceFromField)).sendKeys(serviceFromValue);
-        System.out.println("Service from " + serviceFromValue);
+        switch (requestType) {
+            case "Other":
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.serviceFromInput));
+                driver.findElement(nonPoAccrualRequestPage.serviceFromInput).sendKeys(serviceFromValue);
+                driver.findElement(nonPoAccrualRequestPage.serviceFromInput).sendKeys(serviceFromValue);
+                System.out.println("Service from " + serviceFromValue);
+                break;
+            case "Event Card":
+                wait.until(ExpectedConditions.elementToBeClickable(nonPoAccrualRequestPage.serviceFromField)).sendKeys(serviceFromValue);
+                System.out.println("Service from " + serviceFromValue);
+                break;
+        }
     }
 
 
     public void serviceTo() throws Exception {
         String serviceToValue = TEST_DATA.getServiceTo();
+        String requestType = TEST_DATA.getRequestType();
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.serviceToField)).sendKeys(serviceToValue);
-        System.out.println("Service to " + serviceToValue);
+        switch (requestType) {
+            case "Other":
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.serviceToInput)).sendKeys(serviceToValue);
+                System.out.println("Service to " + serviceToValue);
+                break;
+            case "Event Card":
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.serviceToField)).sendKeys(serviceToValue);
+                System.out.println("Service to " + serviceToValue);
+                break;
+        }
     }
 
 
     public void ttlUPI() throws Exception {
         String requesterTtlUPI = TEST_DATA.getUpiTtl();
+        String requestType = TEST_DATA.getRequestType();
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.ttlUpiField)).sendKeys(requesterTtlUPI);
-        System.out.println("UPI of TTL: " + requesterTtlUPI);
+        switch (requestType) {
+            case "Event Card":
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.ttlUpiField)).sendKeys(requesterTtlUPI);
+                System.out.println("UPI of TTL: " + requesterTtlUPI);
+                break;
+            case "Other":
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.ttlUpiInput)).sendKeys(requesterTtlUPI);
+                System.out.println("UPI of TTL: " + requesterTtlUPI);
+                break;
+        }
+    }
+
+
+    public void paymentExpectedMode() throws Exception {
+        String paymentMode = TEST_DATA.getPaymentMode();
+
+        switch (paymentMode) {
+            case "Non PO Invoice":
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.paymentTypeDropdown)).sendKeys(Keys.ARROW_UP);
+                wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.paymentTypeDropdown)).sendKeys(Keys.ENTER);
+                System.out.println("Payment mode " + paymentMode);
+                break;
+        }
     }
 
 
@@ -380,24 +441,29 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
     public void selectApprover() throws Exception {
         String approverValue = TEST_DATA.getApprover();
 
-        wait.until(ExpectedConditions.elementToBeClickable(nonPoAccrualRequestPage.selectApproverDropdown));
-        commons.clickElement(nonPoAccrualRequestPage.selectApproverDropdown);
-        delay(1000);
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(nonPoAccrualRequestPage.selectApproverDropdown));
+            commons.clickElement(nonPoAccrualRequestPage.selectApproverDropdown);
+            delay(1000);
 
-        driver.findElement(nonPoAccrualRequestPage.selectApproverDropdown).sendKeys(Keys.UP);
-        delay(500);
-        driver.findElement(nonPoAccrualRequestPage.selectApproverDropdown).sendKeys(Keys.UP);
-        delay(500);
-        driver.findElement(nonPoAccrualRequestPage.selectApproverDropdown).sendKeys(Keys.UP);
-        delay(500);
-        driver.findElement(nonPoAccrualRequestPage.selectApproverDropdown).sendKeys(Keys.ENTER);
-        delay(500);
-        System.out.println("Approver is selected");
+            driver.findElement(nonPoAccrualRequestPage.selectApproverDropdown).sendKeys(Keys.UP);
+            delay(500);
+            driver.findElement(nonPoAccrualRequestPage.selectApproverDropdown).sendKeys(Keys.UP);
+            delay(500);
+            driver.findElement(nonPoAccrualRequestPage.selectApproverDropdown).sendKeys(Keys.UP);
+            delay(500);
+            driver.findElement(nonPoAccrualRequestPage.selectApproverDropdown).sendKeys(Keys.ENTER);
+            delay(500);
+            System.out.println("Approver is selected");
+            approver = true;
+        } catch (Exception e) {
+            approver = false;
+        }
     }
 
 
     public void addText(String scenarioType, int testCaseNumber) throws Exception {
-        String text = testDataReader.getEventNaturePurchase(scenarioType, testCaseNumber);
+        String text = testDataReader.getEventNaturePurchaseValue(scenarioType, testCaseNumber);
         wait.until(ExpectedConditions.elementToBeClickable(nonPoAccrualRequestPage.textInput));
         delay(500);
         commons.clickAction(nonPoAccrualRequestPage.textInput);
@@ -483,16 +549,19 @@ public class NonPOAccrualRequest extends GeneralTestConfig {
     public boolean handleDuplicatedRequests() throws InterruptedException {
         try {
             delay(1000);
-            driver.switchTo().frame(0);
-            delay(500);
+            if (!approver) {
+                driver.switchTo().frame(1);
+            } else
+                driver.switchTo().frame(0);
+                delay(500);
 
-            driver.findElement(nonPoAccrualRequestPage.duplicatedMsgTextArea).sendKeys("Test");
-            delay(500);
+                driver.findElement(nonPoAccrualRequestPage.duplicatedMsgTextArea).sendKeys("Test");
+                delay(500);
 
-            commons.clickAction(nonPoAccrualRequestPage.duplicatedMsgConfirmBtn);
-            delay(1000);
-            System.out.println("Request is duplicated");
-            return true;
+                commons.clickAction(nonPoAccrualRequestPage.duplicatedMsgConfirmBtn);
+                delay(1000);
+                System.out.println("Request is duplicated");
+                return true;
         } catch (Throwable e) {
             System.out.println("Request is not duplicated");
             return false;

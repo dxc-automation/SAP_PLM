@@ -138,6 +138,7 @@ public class ProcessNonPOAccuralRequest extends GeneralTestConfig {
         return value;
     }
 
+
     // Check review completed checkbox
     public void reviewCompleted() {
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/usr/subSUB_MAIN:/OPT/SAPLVIM_IDX_UI:1001/subSUB_TAB_STRIP:/OPT/SAPLVIM_IDX_UI:1002/tabsTAB_MAIN/tabpTAB6/ssubTAB_MAIN_SUBSCREEN:SAPLZFI_VIM75_IDX_UI_NPO:1903/chkGH_IDX_APPLICATION->MS_IDX_HEADER-CUSTOM_FIELD7").toDispatch());

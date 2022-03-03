@@ -50,7 +50,7 @@ public class DataReader {
         inputStream = new FileInputStream(file);
         workbook = (XSSFWorkbook) WorkbookFactory.create(inputStream);
         sheet = workbook.getSheet(scenarioType);
-        row = sheet.getRow(0);
+        row = sheet.getRow(1);
 
         return sheet.getLastRowNum();
     }

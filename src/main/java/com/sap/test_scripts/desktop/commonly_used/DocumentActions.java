@@ -2,6 +2,7 @@ package com.sap.test_scripts.desktop.commonly_used;
 
 import com.sap.config.GeneralTestConfig;
 import com.sap.config.TestNGListener;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
 @Listeners(TestNGListener.class)
@@ -21,13 +22,22 @@ public class DocumentActions extends GeneralTestConfig {
     private final String commandFieldId  = "//*[@AutomationId='1001']";
 
 
+    //  Click execute button
     public void clickExecute() {
         autoItX.winWait("[CLASS:SAP_FRONTEND_SESSION]", "", 5);
         autoItX.winActivate("[CLASS:SAP_FRONTEND_SESSION]");
         autoItX.controlFocus("[CLASS:SAP_FRONTEND_SESSION]", "", executeButtonId);
-        autoItX.sleep(delay);
         autoItX.controlClick("[CLASS:SAP_FRONTEND_SESSION]", "", executeButtonId);
     }
+
+
+    //  Returns system message
+    public String getSystemMsg() {
+        autoItX.sleep(3000);
+        String result = autoItX.controlGetText(mainWindowClass,"","59393");
+        return result;
+    }
+
 
     public void maximizeWindow() {
         autoItX.winMinimizeAllUndo();

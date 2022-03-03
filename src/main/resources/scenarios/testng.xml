@@ -9,15 +9,27 @@
     <test name="Test">
         <classes>
 
-            <class name="com.sap.test_cases.non_po_accrual_request.TC_Approve_Reject">
+            <class name="com.sap.test_cases.non_po_accrual_request.TS_30_Check_SAP_Report">
                 <methods>
-                    <include name="Scenario_1"/>
+                    <include name="searchForDpDocumentType"/>
                 </methods>
             </class>
 
-            <class name="com.sap.test_cases.non_po_accrual_request.TC_Obsolete">
+            <class name="com.sap.test_cases.non_po_accrual_request.TS_31_Create_NPO_Accrual_CO_HQ">
                 <methods>
-                    <include name="Scenario_3_Obsolete"/>
+                    <include name="createNpoAccrualRequest"/>
+                </methods>
+            </class>
+            
+            <class name="com.sap.test_cases.non_po_accrual_request.TS_32_Create_NPO_Accrual_Request_Excel_Upload">
+                <methods>
+                    <include name="createNpoAccrualRequestExcelUpload"/>
+                </methods>
+            </class>
+            
+            <class name="com.sap.test_cases.non_po_accrual_request.TS_46_47_Create_NPO_Accrual_Request_Currency">
+                <methods>
+                    <include name="npoRequestWithLocalCurrency"/>
                 </methods>
             </class>
 

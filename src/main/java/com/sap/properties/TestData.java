@@ -22,6 +22,7 @@ public class TestData extends GeneralTestConfig {
     private String serviceTo;
     private String requestType;
     private String dpDocumentType;
+    private String paymentMode;
 
     private String reimbursementFor;
     private String invoiceDate;
@@ -37,6 +38,9 @@ public class TestData extends GeneralTestConfig {
 
 
     //***   Get & Set Values
+    public String getPaymentMode() { return paymentMode; }
+    public void   setPaymentMode(String newPaymentMode) { this.paymentMode = newPaymentMode; }
+
     public int  getDetectedNumberOfTests() { return  detectedNumberOfTests; }
     public void setDetectedNumberOfTests(int newDetectedNumberOfTests) { this.detectedNumberOfTests = newDetectedNumberOfTests; }
 
@@ -110,6 +114,9 @@ public class TestData extends GeneralTestConfig {
 
 
     public static void getAllTestData(String scenarioType, int testCaseNumber) throws Exception {
+        String paymentMode = testDataReader.getPaymentModeValue(scenarioType, testCaseNumber);
+        TEST_DATA.setPaymentMode(paymentMode);
+
         String documentType = testDataReader.getDocumentTypeValue(scenarioType, testCaseNumber);
         TEST_DATA.setDpDocumentType(documentType);
 
@@ -122,7 +129,7 @@ public class TestData extends GeneralTestConfig {
         String reimbursementFor = testDataReader.getReimbursementForValue(scenarioType, testCaseNumber);
         TEST_DATA.setReimbursementFor(reimbursementFor);
 
-        String requestType = testDataReader.getRequestType(scenarioType, testCaseNumber);
+        String requestType = testDataReader.getRequestTypeValue(scenarioType, testCaseNumber);
         TEST_DATA.setRequestType(requestType);
 
         String serviceFrom = testDataReader.getServiceDateFrom(scenarioType, testCaseNumber);

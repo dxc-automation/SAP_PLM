@@ -72,6 +72,10 @@ public class BrowserManager extends GeneralTestConfig {
 
 
     public void tearDownDriver() {
-        driver.close();
+        try {
+            driver.close();
+        } catch (Exception e) {
+            System.out.println("Failed to close WebDriver");
+        }
     }
 }

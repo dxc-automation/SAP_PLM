@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+
+<suite name="TestSuite" configfailurepolicy="continue" verbose="10"  thread-count="5">
+
+
+    <parameter name="browser"     value="chrome"/>
+    <test name="Test">
+        <classes>
+
+            <class name="com.sap.test_cases.non_po_accrual_request.TS_30_Check_SAP_Report">
+                <methods>
+                    <include name="searchForDpDocumentType"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+
+
+
+

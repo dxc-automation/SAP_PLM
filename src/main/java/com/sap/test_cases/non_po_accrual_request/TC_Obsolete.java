@@ -46,7 +46,10 @@ public class TC_Obsolete extends GeneralTestConfig {
     @Test
     public void Scenario_3_Obsolete() throws Exception {
         for (int testCaseNumber = 1; true; testCaseNumber++) {
-                String testEnabledDisabled = checkTestStatus(scenarioType, testCaseNumber);
+            if (testCaseNumber > detectedNumberOfTests) {
+                break;
+            }
+            String testEnabledDisabled = checkTestStatus(scenarioType, testCaseNumber);
 
                 if (testEnabledDisabled.equals("disabled")) {
                     System.out.println("\nTest Case No " + testCaseNumber + " is disabled");
@@ -122,6 +125,7 @@ public class TC_Obsolete extends GeneralTestConfig {
                     general.checkRequestStatus(scenarioType, testCaseNumber);
 
                     addToTemplate(scenarioType, testCaseNumber, "pass");
+                    browserManager.tearDownDriver();
                     passedTests++;
                 } catch (Throwable throwable) {
                     // Print stack trace into console
@@ -140,7 +144,6 @@ public class TC_Obsolete extends GeneralTestConfig {
                     failedTests++;
                     logoff.logOff();
                 }
-            if (testCaseNumber == detectedNumberOfTests) break;
             }
         }
     }

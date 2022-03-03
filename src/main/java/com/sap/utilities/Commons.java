@@ -41,8 +41,8 @@ public class Commons extends GeneralTestConfig {
     public static void printExecutionTime(long startTime, long endTime) {
         long time_ns = endTime - startTime;
         long time_ms = TimeUnit.NANOSECONDS.toMillis(time_ns);
-        long time_sec = TimeUnit.NANOSECONDS.toSeconds(time_ns);
-        long time_min = TimeUnit.NANOSECONDS.toMinutes(time_ns);
+        long time_sec  = TimeUnit.NANOSECONDS.toSeconds(time_ns);
+        long time_min  = TimeUnit.NANOSECONDS.toMinutes(time_ns);
         long time_hour = TimeUnit.NANOSECONDS.toHours(time_ns);
 
         System.out.print("\nExecution Time: ");
@@ -187,7 +187,7 @@ public class Commons extends GeneralTestConfig {
 
 
     //***   Returns timestamp as string
-    public String getTimestamp() {
+    public static String getTimestamp() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String time = dateFormat.format(timestamp);
@@ -216,7 +216,7 @@ public class Commons extends GeneralTestConfig {
     //***   Returns current date as string
     public String getCurrentDate() {
         LocalDate date = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
         String currentDate = date.format(formatter);
         return currentDate;
     }

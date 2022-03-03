@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"> <img src='../report/img/logo.png' /> </span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Feb 4, 2022 08:41:49 PM</span></a>
+<a href="#"><span class="badge badge-primary">Mar 2, 2022 10:40:19 PM</span></a>
 </li>
 </ul>
 </div>
@@ -83,20 +83,20 @@
           </div>
           <div class="test-detail">
             <span class="meta text-white badge badge-sm"></span>
-            <p class="name"><b>[ TC_001 </b>]  <b>Create NPO Accrual - Excel Upload</b></p>
-            <p class="text-sm"><span>20:41:50 PM</span> / <span>165.732 secs</span></p>
+            <p class="name"><b>[ TC_001 </b>]  <b>Create NPO Accrual - Local Currency</b></p>
+            <p class="text-sm"><span>22:40:20 PM</span> / <span>205.911 secs</span></p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
 <div class='float-right'><span class='badge badge-default'>#test-id=1</span></div>
-<h5 class="test-status text-pass"><b>[ TC_001 </b>] <b>Create NPO Accrual - Excel Upload</b></h5>
-<span class='badge badge-success'>02.04.2022 20:41:50</span>
-<span class='badge badge-danger'>02.04.2022 20:44:35</span>
-<span class='badge badge-default'>165.732 secs</span>
+<h5 class="test-status text-pass"><b>[ TC_001 </b>] <b>Create NPO Accrual - Local Currency</b></h5>
+<span class='badge badge-success'>03.02.2022 22:40:20</span>
+<span class='badge badge-danger'>03.02.2022 22:43:45</span>
+<span class='badge badge-default'>205.911 secs</span>
 </div>
-<div class="m-t-10 m-l-5"><pre><p align=justify><b><i class="fa fa-desktop blue-color "></i> Search by Document Type</b><br><br>Validate that the user can create NPO Accrual Request (CO/HQ) from ePayables Request Portal using excel file.<br>[1] Open ePayables Request Portal in browser.<br>[2] Submit a Non-PO Accrual Request (CO/HQ).[3] Enter the transaction code from the SAP Easy Access World Bank.<br>[4] Enter specific Document Process Number.<br>[5] Verify that specific document pending for approval.<br>[5] Export search results to HTML file.</p></pre></div>
+<div class="m-t-10 m-l-5"><pre><p align=justify><b><i class="fa fa-desktop blue-color "></i> Submit NPO accrual request in local currency.</b><br><br>Validate that the user can submit NPO Accrual Request (CO/HQ) from ePayables Request Portal with local currency. This request should go for final review/posting in SAP and VIM reflects equivalent USD value.<br>[1] Open ePayables Request Portal in browser.<br>[2] Submit a Non-PO Accrual Request (CO/HQ).<br>[3] Enter the transaction code from the SAP Easy Access World Bank.<br>[4] Enter search filter criteria.<br>[5] Verify search result details.<br></p></pre></div>
 </div>
 </div><div class="detail-body mt-4">
 <table class="table table-sm">
@@ -104,11 +104,11 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>8:44:35 PM</td>
+        <td>10:43:45 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
-    <img data-featherlight='../report/Screenshots/Failed/TS_32_Create_NPO_Accrual_Excel.png' src="../report/Screenshots/Failed/TS_32_Create_NPO_Accrual_Excel.png">
+    <img data-featherlight='../report/Screenshots/Failed/TS_46_&_47_NPO_Local_Currency.png' src="../report/Screenshots/Failed/TS_46_&_47_NPO_Local_Currency.png">
     
     </div></div>
         </td>
@@ -133,7 +133,7 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>8:42:03 PM</td>
+        <td>10:40:34 PM</td>
         <td>
           <pre>Log into web ePayables request portal with UPI <b>WBR500052</b></pre>
         </td>
@@ -159,9 +159,9 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>8:43:29 PM</td>
+        <td>10:42:29 PM</td>
         <td>
-          <pre>Request Type &Tab; &Tab; &Tab; <b>N/A</b><br>Business Area &Tab; &Tab; <b>BAE1</b><br>UPI of TTL &Tab; &Tab; &Tab; <b>271182</b><br>Currency &Tab; &Tab; &Tab; <b>USD</b><br>Amount &Tab; &Tab; &Tab; &Tab; <b>N/A</b><br>GL Category &Tab; &Tab; &Tab; <b>N/A</b><br>Charge Type &Tab; &Tab; &Tab; <b>N/A</b><br>Charge Code &Tab; &Tab; &Tab; <b>N/A</b><br><center><b>Request Card Holder Details</b></center><br>UPI of card holder &Tab; &Tab; <b>271182</b><br>Last 4 digits of the card &Tab; <b>2312</b><br>Approver &Tab; &Tab; &Tab; <b>N/A</b><br>Card cycle period &Tab; &Tab; <b>FY22 - SEP</b><br>Service From &Tab; &Tab; &Tab; <b>09/01/2021</b><br>Service To &Tab; &Tab; &Tab; <b>09/02/2021</b><br>Request ID &Tab;  &Tab; &Tab; <b>1259137</b></pre></pre>
+          <pre>Request Type &Tab; &Tab; &Tab; <b>Other</b><br>Business Area &Tab; &Tab; <b>BAE1</b><br>UPI of TTL &Tab; &Tab; &Tab; <b>271182</b><br>Currency &Tab; &Tab; &Tab; <b>INR</b><br>Amount &Tab; &Tab; &Tab; &Tab; <b>79,000.10</b><br>GL Category &Tab; &Tab; &Tab; <b>500406340</b><br>Charge Type &Tab; &Tab; &Tab; <b>Cost Center</b><br>Charge Code &Tab; &Tab; &Tab; <b>117</b><br><center><b>Request Card Holder Details</b></center><br>UPI of card holder &Tab; &Tab; <b>271182</b><br>Last 4 digits of the card &Tab; <b>2312</b><br>Approver &Tab; &Tab; &Tab; <b>TC_001</b><br>Card cycle period &Tab; &Tab; <b>null</b><br>Service From &Tab; &Tab; &Tab; <b>03/03/2022</b><br>Service To &Tab; &Tab; &Tab; <b>03/05/2022</b><br>Request ID &Tab;  &Tab; &Tab; <b>1271098</b></pre></pre>
         </td>
       </tr>
   </tbody>
@@ -185,7 +185,7 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>8:43:38 PM</td>
+        <td>10:42:37 PM</td>
         <td>
           <pre>Log into desktop SAP GUI for Windows with UPI <b>WBR500024</b></pre>
         </td>
@@ -198,7 +198,7 @@
       <div class="card">
         <div class="card-header">
           <div class="card-title">
-            <div class="node" id="5"><b><i class="fa fa-desktop blue-color "></i> [ Validate Search DP Document Type ]</b></div>
+            <div class="node" id="5"><b><i class="fa fa-desktop blue-color "></i> [ VIM Non-PO Accrual Report ]</b></div>
             <div class="status-avatar float-right pass-bg">
                <i class="fa fa-check text-white"></i>
             </div>
@@ -211,16 +211,9 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>8:44:10 PM</td>
+        <td>10:42:37 PM</td>
         <td>
-          <pre>Found Results (1 Hit) results for <b>ZVIMNPO_CO</b></pre>
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log pass-bg">Pass</span></td>
-        <td>8:44:10 PM</td>
-        <td>
-          <pre>Search results were exported successfully and can be found <a href='C:\Users\wb580314\source\repos\PLM QA COE/report/temp/ZVIMNPO_CO.html'>here</a></pre>
+          <pre>Open transaction with code <b>ZWBREP_NPOACR_RPT</b></pre>
         </td>
       </tr>
   </tbody>
@@ -231,7 +224,7 @@
       <div class="card">
         <div class="card-header">
           <div class="card-title">
-            <div class="node" id="6"><b><i class="fa fa-chrome blue-color "></i> [ Validate Request Status ]</b></div>
+            <div class="node" id="6"><b><i class="fa fa-desktop blue-color "></i> [ Search Non-PO Accrual Report ]</b></div>
             <div class="status-avatar float-right pass-bg">
                <i class="fa fa-check text-white"></i>
             </div>
@@ -244,9 +237,61 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log pass-bg">Pass</span></td>
-        <td>8:44:35 PM</td>
+        <td>10:42:55 PM</td>
         <td>
-          <pre>Request Status <b>Submitted</b><br>Request ID <b>1259137</b><br><a href='https://tstlbssl.worldbank.org/sap/bc/webdynpro/sap/zvim_non_po_accrual?DISPLAY=&DOCTYPE=ZVIMNPO_CO&DOCID=1259137#'>Link</a></pre>
+          <pre>Document search criteria:<br><p>Request ID &Tab; <b>1271098</b><br>Create Date &Tab; <b>03-02-2022</b><br>DP Type &Tab; &Tab; <b>CO</b></pre>
+        </td>
+      </tr>
+  </tbody>
+</table>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="node" id="7"><b><i class="fa fa-desktop blue-color "></i> [ Validate Search Result Details ]</b></div>
+            <div class="status-avatar float-right pass-bg">
+               <i class="fa fa-check text-white"></i>
+            </div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>10:43:23 PM</td>
+        <td>
+          <pre>Original submitted amount <b>79,000.10 INR</b><br>USD equivalent amount <b>USD Equiv Orig.Sub Amount : 1042.91</b></pre>
+        </td>
+      </tr>
+  </tbody>
+</table>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="node" id="8"><b><i class="fa fa-chrome blue-color "></i> [ Validate Request Status ]</b></div>
+            <div class="status-avatar float-right pass-bg">
+               <i class="fa fa-check text-white"></i>
+            </div>
+          </div>
+        </div>
+        <div class="collapse">
+          <div class="card-body">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>10:43:45 PM</td>
+        <td>
+          <pre>Request Status <b>Submitted</b><br>Request ID <b>1271098</b><br><a href='https://tstlbssl.worldbank.org/sap/bc/webdynpro/sap/zvim_non_po_accrual?DISPLAY=&DOCTYPE=ZVIMNPO_CO&DOCID=1271098#'>Link</a></pre>
         </td>
       </tr>
   </tbody>
@@ -272,13 +317,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Feb 4, 2022 08:41:49 PM</h3>
+<h3>Mar 2, 2022 10:40:19 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Feb 4, 2022 08:44:36 PM</h3>
+<h3>Mar 2, 2022 10:43:54 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -329,7 +374,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>5</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>7</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -349,7 +394,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='85%'><b>6</b> events passed</small></div>
+<div><small data-tooltip='87%'><b>7</b> events passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> events failed,
 <b data-tooltip='%'>1</b> others
@@ -404,7 +449,7 @@ failParent: 0,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 5,
+passChild: 7,
 failChild: 0,
 warningChild: 0,
 skipChild: 0,
@@ -416,7 +461,7 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 6,
+passEvents: 7,
 failEvents: 0,
 warningEvents: 0,
 skipEvents: 0,

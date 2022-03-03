@@ -112,6 +112,10 @@ public class TestDataReader {
 
     //***   TEST DATA   ***//
 
+    public String getPaymentModeValue(String scenarioType, int testCaseNumber) throws Exception {
+        return getTestData(scenarioType, "Payment Mode", testCaseNumber);
+    }
+
     public static String getViewMode(String scenarioType, int testCaseNumber) throws Exception {
         return getTestData(scenarioType, "Work View Mode", testCaseNumber);
     }
@@ -136,7 +140,7 @@ public class TestDataReader {
         return getTestData(scenarioType, "GL Category", testCaseNumber);
     }
 
-    public static String getEventNaturePurchase(String scenarioType, int testCaseNumber) throws Exception {
+    public String getEventNaturePurchaseValue(String scenarioType, int testCaseNumber) throws Exception {
         return getTestData(scenarioType, "Event Nature Purchase", testCaseNumber);
     }
 
@@ -144,7 +148,7 @@ public class TestDataReader {
         return getTestData(scenarioType, "Approver", testCaseNumber);
     }
 
-    public static String getRequestType(String scenarioType, int testCaseNumber) throws Exception {
+    public String getRequestTypeValue(String scenarioType, int testCaseNumber) throws Exception {
         return getTestData(scenarioType, "Request Type", testCaseNumber);
     }
 

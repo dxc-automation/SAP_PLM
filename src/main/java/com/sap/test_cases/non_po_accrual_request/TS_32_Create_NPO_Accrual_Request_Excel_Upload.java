@@ -10,6 +10,7 @@ import com.sap.test_scripts.desktop.opt_vim.VIM_WP;
 import com.sap.test_scripts.web.General;
 import com.sap.test_scripts.web.NonPOAccrualRequest;
 import com.sap.test_scripts.web.ePayablesRequestPortal;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -38,7 +39,7 @@ public class TS_32_Create_NPO_Accrual_Request_Excel_Upload extends GeneralTestCo
     public int detectedNumberOfTests;
     private String scenarioType = "TS_32_Create_NPO_Accrual_Excel";
 
-    @BeforeTest
+    @BeforeClass
     public void countTestDataRows() throws Exception {
         detectedNumberOfTests = getNumberOfRows(scenarioType);
         TEST_DATA.setDetectedNumberOfTests(detectedNumberOfTests);
@@ -47,8 +48,11 @@ public class TS_32_Create_NPO_Accrual_Request_Excel_Upload extends GeneralTestCo
 
 
     @Test
-    public void searchForDpDocumentType() throws Exception {
+    public void createNpoAccrualRequestExcelUpload() throws Exception {
         for (int testCaseNumber = 1; true; testCaseNumber++) {
+            if (testCaseNumber > detectedNumberOfTests) {
+                break;
+            }
             String testEnabledDisabled = checkTestStatus(scenarioType, testCaseNumber);
 
             if (testEnabledDisabled.equals("disabled")) {
@@ -120,6 +124,7 @@ public class TS_32_Create_NPO_Accrual_Request_Excel_Upload extends GeneralTestCo
 
                 general.checkRequestStatus(scenarioType, testCaseNumber);
                 addToTemplate(scenarioType, testCaseNumber, "pass");
+                browserManager.tearDownDriver();
                 passedTests++;
             } catch (Throwable throwable) {
                 // Print stack trace into console
@@ -133,7 +138,6 @@ public class TS_32_Create_NPO_Accrual_Request_Excel_Upload extends GeneralTestCo
                 failedTests++;
                 logoff.logOff();
             }
-            if (testCaseNumber == detectedNumberOfTests) break;
         }
     }
 }

@@ -29,13 +29,13 @@ public class TestDataWriter extends GeneralTestConfig {
             XSSFRow row = sheet1.getRow(testCaseNumber);
 
             String requestId = TEST_DATA.getRequestID();
-            XSSFCell requestNumber = row.getCell(18);
+            XSSFCell requestNumber = row.getCell(19);
             requestNumber.setCellValue(requestId);
 
-            XSSFCell requestStatus = row.getCell(19);
+            XSSFCell requestStatus = row.getCell(20);
             requestStatus.setCellValue(TEST_DATA.getRequestStatusFromWeb());
 
-            XSSFCell overallStatus = row.getCell(20);
+            XSSFCell overallStatus = row.getCell(21);
             overallStatus.setCellValue(status.toUpperCase());
 
             file.close();

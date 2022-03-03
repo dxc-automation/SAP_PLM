@@ -31,14 +31,12 @@ public class ZWFINVAPP_Obj extends GeneralTestConfig {
         getSession();
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/usr/ctxtP_INV_NO-LOW").toDispatch());
         Obj.invoke("setFocus");
-        autoItX.sleep(delay);
         Obj.setProperty("text", TEST_DATA.getRequestID());
     }
 
     public void clickDisplayDP() {
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[0]/tbar[1]/btn[7]").toDispatch());
         Obj.invoke("setFocus");
-        autoItX.sleep(delay);
         Obj.invoke("press");
         autoItX.sleep(500);
     }
@@ -103,7 +101,6 @@ public class ZWFINVAPP_Obj extends GeneralTestConfig {
         }
         Obj = new ActiveXComponent(Session.invoke("findById", path).toDispatch());
         Obj.invoke("setFocus");
-        autoItX.sleep(delay);
         value = Obj.getProperty("text").toString();
 
         return value;
@@ -115,7 +112,6 @@ public class ZWFINVAPP_Obj extends GeneralTestConfig {
         // Open process tab
         Obj = new ActiveXComponent(Session.invoke("findById", "wnd[1]/usr/subSUB_MAIN:/OPT/SAPLVIM_IDX_UI:1002/tabsTAB_MAIN/tabpTAB6").toDispatch());
         Obj.invoke("setFocus");
-        autoItX.sleep(delay);
         Obj.invoke("select");
 
         switch (property) {

@@ -164,7 +164,7 @@ public class LeaseRequest extends GeneralTestConfig {
 
 
     public void eventNaturePurchase(String scenarioType, int testCaseNumber) throws Exception {
-        String eventNaturePurchase = testDataReader.getEventNaturePurchase(scenarioType, testCaseNumber);
+        String eventNaturePurchase = testDataReader.getEventNaturePurchaseValue(scenarioType, testCaseNumber);
 
         wait.until(ExpectedConditions.presenceOfElementLocated(nonPoAccrualRequestPage.eventNaturePurchaseFld));
         driver.findElement(nonPoAccrualRequestPage.eventNaturePurchaseFld).sendKeys(eventNaturePurchase);
@@ -398,7 +398,7 @@ public class LeaseRequest extends GeneralTestConfig {
 
 
     public void addText(String scenarioType, int testCaseNumber) throws Exception {
-        String text = testDataReader.getEventNaturePurchase(scenarioType, testCaseNumber);
+        String text = testDataReader.getEventNaturePurchaseValue(scenarioType, testCaseNumber);
         wait.until(ExpectedConditions.elementToBeClickable(nonPoAccrualRequestPage.textInput));
         delay(500);
         commons.clickAction(nonPoAccrualRequestPage.textInput);

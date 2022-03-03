@@ -44,6 +44,13 @@ public class NonPoAccrualRequestPage {
     public final By cardHolderUpiField = By.xpath("(//label[text()='UPI of card holder:']/following::input)[1]");
     public final By cardCyclePeriodField = By.xpath("//table[@class='urMatrixLayout']//span[@class='urCoB2Whl']/input[1]");
 
+    //  Non Purchase Order
+    public final By nonPurchaseRadioBtn = By.xpath("//table[@class='urMatrixLayout']/tbody/tr/td[2]/table//tr/td[3]/span[@class='urCWhlEmph']/span[@class='urCLbl urCl1']/img[@src='/sap/public/bc/ur/nw5/1x1.gif']");
+    public final By paymentTypeDropdown = By.xpath("//table[@class='urMatrixLayout']//span[@class='urCoB2Whl']/input[@type='text']");
+    public final By serviceFromInput = By.xpath("//table[@class='urMatrixLayout']//div/table[@class='urFontStd']/tbody/tr[2]/td[1]//input[1]");
+    public final By serviceToInput = By.xpath("//table[@class='urMatrixLayout']//div/table[@class='urFontStd']/tbody/tr[2]/td[2]//input[1]");
+    public final By ttlUpiInput = By.xpath("//table[@class='urMatrixLayout']//tr[5]/td[2]//input[1]");
+    public final By eventNaturePurchaseInput = By.xpath("//table[@class='urMatrixLayout']//tr[3]/td[2]//input[1]");
 
     //***   Accrual/Charge Code Information
     public final By amountInput = By.xpath("/html[1]/body[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/div[1]/div[1]/div[2]/div[1]/span[1]/span[1]/table[1]/tbody[1]/tr[1]/td[1]/div[1]/table[1]/tbody[1]/tr[5]/td[1]/table[1]/tbody[1]/tr[2]/td[1]/div[1]/table[1]/tbody[1]/tr[3]/td[1]/div[1]/table[1]/tbody[1]/tr[2]/td[2]/div[1]/div[1]/span[1]/span[2]/div[1]/table[1]/tbody[1]/tr[8]/td[1]/div[1]/table[1]/tbody[1]/tr[2]/td[1]/table[1]/tbody[1]/tr[1]/td[1]/span[1]/table[1]/tbody[1]/tr[2]/td[3]/table[1]/tbody[1]/tr[1]/td[1]/input[1]");
